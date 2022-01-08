@@ -1,5 +1,7 @@
-import Navigation from './Navigation';
-import Profile from './Profile';
+import Navigation from './Navigation/Navigation';
+import Profile from './Profile/Profile';
+import './Body.scss';
+
 
 const Body = () => {
     return (

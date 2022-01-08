@@ -1,29 +1,13 @@
 // ------------------------------------
 import './scss/null.scss';
+import './scss/ui.scss';
 import './App.scss';
 
 // ------------------------------------
-import Header from './components/Header';
-import './scss/Header.scss';
-
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 // ------------------------------------
-import Body from './components/Body';
-import './scss/Body.scss';
-
-// ------------------------------------
-// import Navigation from './components/Navigation';
-import './scss/Navigation.scss';
-
-// ------------------------------------
-// import Profile from './components/Profile';
-import './scss/Profile.scss';
-
-// ------------------------------------
-import Footer from './components/Footer';
-import './scss/Footer.scss';
-
-// ------------------------------------
-
+import Body from './components/Body/Body';
 
 const App = () => {
   return (

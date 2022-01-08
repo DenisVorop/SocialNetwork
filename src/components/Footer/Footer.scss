@@ -1,5 +1,6 @@
 .footer {
     padding: 0px 15px 0 15px;
+
     &__container {
         height: 60px;
         background-color: #ffa;
@@ -8,6 +9,7 @@
         justify-content: center;
         text-align: center;
     }
+
     &__copy {
         text-transform: uppercase;
         text-decoration: underline;

@@ -1,4 +1,5 @@
-
+import './Profile.scss';
+import MyPosts from './MyPosts/MyPosts';
 
 let Profile = () => {
   return (
@@ -17,14 +18,7 @@ let Profile = () => {
         </div>
       </div>
       <div className="profile-body__posts">
-      <div className="profile-body__my">My posts</div>
-        <div className="profile-body__myPosts">
-          <div className="profile-body__post">1 post</div>
-          <div className="profile-body__post">2 post</div>
-          <div className="profile-body__post">3 post</div>
-          <div className="profile-body__post">4 post</div>
-          <div className="profile-body__post">5 post</div>
-        </div>
+        <MyPosts />
       </div>
     </div>
   );

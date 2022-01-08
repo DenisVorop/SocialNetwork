@@ -1,4 +1,4 @@
-
+import './Footer.scss';
 
 const Footer = () => {
     return (
@@ -13,4 +13,3 @@ const Footer = () => {
 }
 
 export default Footer;
-

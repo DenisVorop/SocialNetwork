@@ -1,17 +1,21 @@
 .body {
     margin: 0px 0px 10px 0px;
+
     &__container {
         background-color: #ffa;
         padding: 0px 15px;
     }
+
     &__row {
         display: grid;
         grid-template-columns: 180px 1fr;
         grid-template-rows: 1fr;
     }
+
     &__navigation {
         background-color: #fdd;
     }
+
     &__profile {
         background-color: #fdf;
     }

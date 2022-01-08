@@ -1,19 +1,23 @@
 .header {
     margin: 0px 0px 10px 0px;
+
     &__container {
         padding: 20px 15px;
         background-color: #ffa;
     }
+
     &__logo {
         display: flex;
         align-items: center;
         background-color: #aaf;
     }
+
     &__image img {
         width: 90px;
         height: 90px;
         border-radius: 50%;
     }
+
     &__name {
         margin: 0px 0px 0px 25px;
         font-size: 54px;
