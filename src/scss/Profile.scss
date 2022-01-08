@@ -1,0 +1,70 @@
+.profile-body {
+    &__board {
+        position: relative;
+        height: 300px;
+        width: 100%;
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+    }
+
+    &__user {
+        display: flex;
+        padding: 20px 20px 10px 20px;
+    }
+
+    &__avatar {
+        margin: 0px 20px 0px 0px;
+    }
+
+    &__avatar img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    &__info {}
+
+    &__posts {
+        padding: 10px 20px 20px 20px;
+    }
+
+    &__my {
+        margin: 0px 0px 20px 0px;
+    }
+
+    &__myPosts {
+        // height: 160px;
+        // overflow-x: scroll;
+    }
+
+    &__post {
+        background-color: #aaa;
+        margin: 0px 0px 10px 0px;
+    }
+}
+
+.info-profile-body {
+    font-size: 28px;
+
+    &__name {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0px 0px 20px 0px;
+    }
+
+    &__birth {}
+
+    &__city {}
+
+    &__education {}
+
+    &__website {
+        text-decoration: underline;
+    }
+}
