@@ -1,5 +1,8 @@
 .navigation-body {
     margin: 0px 15px 0px 0px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    border-radius: 15px;
 
     &__list {
         text-align: center;
@@ -7,13 +10,14 @@
     }
 
     &__link {
-        background-color: #aaa;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
         margin: 0px 0px 10px 0px;
         padding: 5px;
         font-size: 20px;
 
         &:hover {
-            background-color: #aaf;
+            background-color: rgb(223, 223, 223);
         }
     }
 }

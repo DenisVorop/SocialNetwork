@@ -14,7 +14,7 @@ let Profile = () => {
           <div className="info-profile-body__birth">Date of bitth: 10 July</div>
           <div className="info-profile-body__city">City: Moscow</div>
           <div className="info-profile-body__education">Education: High-education</div>
-          <div className="info-profile-body__website"><a href="#">www.pornhub.com</a></div>
+          <div className="info-profile-body__website"><a href="#">www.github.com</a></div>
         </div>
       </div>
       <div className="profile-body__posts">

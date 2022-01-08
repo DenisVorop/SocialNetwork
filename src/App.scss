@@ -4,14 +4,20 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    // > main {
-    //     flex: 1 1 auto;
-    // }
+    background: #FAFAFD;
+    > main {
+        flex: 1 1 auto;
+    }
 }
 
 [class*=__container] {
-    max-width: 1210px;
+    max-width: 1410px;
     box-sizing: content-box;
     margin: 0 auto;
     padding: 0 15px;
+}
+[class*=__body] {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    border-radius: 5px;
 }
