@@ -1,0 +1,17 @@
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    // > main {
+    //     flex: 1 1 auto;
+    // }
+}
+
+[class*=__container] {
+    max-width: 1210px;
+    box-sizing: content-box;
+    margin: 0 auto;
+    padding: 0 15px;
+}
