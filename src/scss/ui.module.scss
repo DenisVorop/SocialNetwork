@@ -3,9 +3,11 @@
 // .
 // .
 //========================================================================================================================================================
-.post_btn {
-    height: 30px;
-    width: 100px;
+._btn {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
     border-radius: 5px;
@@ -13,7 +15,7 @@
     margin: 0px 0px 40px 0px;
 }
 
-.post_area {
+._area {
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
     border-radius: 5px;
     padding: 10px;
