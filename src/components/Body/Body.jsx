@@ -8,15 +8,16 @@ import './Body.scss';
 import { Route, Routes } from 'react-router-dom';
 
 
-const Body = () => {
+const Body = (props) => {
     return (
         <div className="body">
             <div className="body__container">
                 <div className="body__row">
                     <Navigation />
                     <Routes>
-                        <Route path='/profile' element={<Profile />} />
-                        <Route path='/messages/*' element={<Messages />} />
+                        <Route path='/' element={<Profile stateProfilePage={props.statePages.stateProfilePage} />} />
+                        <Route path='/profile' element={<Profile stateProfilePage={props.statePages.stateProfilePage} />} />
+                        <Route path='/messages/*' element={<Messages stateMessagesPage={props.statePages.stateMessagesPage} />} />
                         <Route path='/news' element={<News />} />
                         <Route path='/music' element={<Music />} />
                         <Route path='/settings' element={<Settings />} />

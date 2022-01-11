@@ -1,5 +1,3 @@
-
-
 const Settings = () => {
     return (
         <div className="body__settings settings-body">

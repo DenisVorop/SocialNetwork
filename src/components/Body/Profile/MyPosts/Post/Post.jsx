@@ -1,4 +1,3 @@
-
 const Post = (props) => {
     return (
         <div className="profile-body__post">

@@ -1,7 +1,7 @@
 import './Profile.scss';
 import MyPosts from './MyPosts/MyPosts';
 
-let Profile = () => {
+let Profile = (props) => {
     return (
         <div className="body__profile profile-body">
             <div className="profile-body__board">
@@ -18,7 +18,7 @@ let Profile = () => {
                 </div>
             </div>
             <div className="profile-body__posts">
-                <MyPosts />
+                <MyPosts postData={props.stateProfilePage.postData}/>
             </div>
         </div>
     );

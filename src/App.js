@@ -11,13 +11,13 @@ import Body from './components/Body/Body';
 import { BrowserRouter } from 'react-router-dom';
 
 
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className='wrapper'>
                 <Header />
                 <main className='page'>
-                    <Body />
+                    <Body statePages={props.state} />
                 </main>
             </div>
         </BrowserRouter>

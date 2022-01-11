@@ -1,5 +1,3 @@
-
-
 const News = () => {
     return (
         <div className="body__news news-body">

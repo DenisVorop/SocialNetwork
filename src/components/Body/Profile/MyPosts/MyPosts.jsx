@@ -1,16 +1,10 @@
 import Post from "./Post/Post";
 import ui from '../../../../scss/ui.module.scss';
 
-let postData = [
-    { id: 1, message: 'My first post' },
-    { id: 2, message: 'My second post' },
-    { id: 3, message: 'My third post' },
-]
+let MyPosts = (props) => {
+    let postElements =
+        props.postData.map(post => <Post message={post.message} />)
 
-let postElements = postData
-    .map(post => <Post message={post.message} />)
-
-let MyPosts = () => {
     return (
         <div className="profile-body__input">
             <div className="profile-body__my">My posts</div>
