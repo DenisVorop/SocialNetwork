@@ -12,16 +12,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <div className='wrapper'>
-        <Header />
-        <main className='page'>
-          <Body />
-        </main>
-      </div>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div className='wrapper'>
+                <Header />
+                <main className='page'>
+                    <Body />
+                </main>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

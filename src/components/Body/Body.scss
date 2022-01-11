@@ -7,12 +7,23 @@
     &__row {
         display: grid;
         grid-template-columns: 180px 1fr;
-        grid-template-rows: 1fr;
     }
 
     &__navigation {
     }
 
     &__profile {
+    }
+
+    &__messages {
+    }
+
+    &__news {
+    }
+
+    &__music {
+    }
+
+    &__settings {
     }
 }
