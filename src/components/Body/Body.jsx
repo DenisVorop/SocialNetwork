@@ -15,9 +15,8 @@ const Body = (props) => {
                 <div className="body__row">
                     <Navigation />
                     <Routes>
-                        <Route path='/' element={<Profile stateProfilePage={props.statePages.stateProfilePage} />} />
-                        <Route path='/profile' element={<Profile stateProfilePage={props.statePages.stateProfilePage} />} />
-                        <Route path='/messages/*' element={<Messages stateMessagesPage={props.statePages.stateMessagesPage} />} />
+                        <Route path='/profile' element={<Profile stateProfilePage={props.statePages.stateProfilePage} addPost={props.addPost} />} />
+                        <Route path='/messages/*' element={<Messages stateMessagesPage={props.statePages.stateMessagesPage} addMessage={props.addMessage} />} />
                         <Route path='/news' element={<News />} />
                         <Route path='/music' element={<Music />} />
                         <Route path='/settings' element={<Settings />} />

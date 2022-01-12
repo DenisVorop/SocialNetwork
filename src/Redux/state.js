@@ -1,3 +1,5 @@
+import { rerender } from "../render";
+
 let state = {
     stateProfilePage: {
         postData: [
@@ -22,6 +24,26 @@ let state = {
             { id: 6, name: 'Denis' },
         ],
     },
+}
+
+export let addPost = (Post) => {
+    let newPost = {
+        id: 4,
+        message: Post,
+    };
+
+    state.stateProfilePage.postData.push(newPost);
+    rerender(state);
+}
+
+export let addMessage = (Message) => {
+    let newMessage = {
+        id: 5,
+        message: Message,
+    }
+
+    state.stateMessagesPage.messageData.push(newMessage);
+    rerender(state);
 }
 
 export default state;

@@ -15,8 +15,10 @@ const Messages = (props) => {
 
     let addMessage = () => {
         let text = newMessageElement.current.value;
-        alert(text);
+        props.addMessage(text);
+        newMessageElement.current.value='';
     }
+    console.log(props);
 
     return (
         <div className="body__messages messages-body">
@@ -33,7 +35,7 @@ const Messages = (props) => {
                             <textarea className={ui._area} ref={newMessageElement}></textarea>
                         </div>
                         <div>
-                            <button className={ui._btn} onClick={addMessage}> add message </button>
+                            <button className={ui._btn} onClick={addMessage}>add message</button>
                         </div>
                     </div>
                 </div>
