@@ -9,9 +9,12 @@ let MyPosts = (props) => {
     let newPostElement = createRef();
 
     let addPost = () => {
+        props.addPost();
+    }
+
+    let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value='';
+        props.updateNewPostText(text);
     }
 
     return (
@@ -19,7 +22,12 @@ let MyPosts = (props) => {
             <div className="profile-body__my">My posts</div>
             <div className="profile-body__myPosts">
                 <div>
-                    <textarea className={ui._area} ref={newPostElement}></textarea>
+                    <textarea
+                        className={ui._area}
+                        onChange={onPostChange}
+                        ref={newPostElement}
+                        value={props.newPostText}
+                    />
                 </div>
                 <div>
                     <button className={ui._btn} onClick={addPost}>add post</button>

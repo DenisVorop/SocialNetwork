@@ -18,7 +18,11 @@ let Profile = (props) => {
                 </div>
             </div>
             <div className="profile-body__posts">
-                <MyPosts postData={props.stateProfilePage.postData} addPost={props.addPost} />
+                <MyPosts
+                    postData={props.stateProfilePage.postData}
+                    addPost={props.addPost}
+                    newPostText={props.stateProfilePage.newPostText}
+                    updateNewPostText={props.updateNewPostText} />
             </div>
         </div>
     );

@@ -5,6 +5,8 @@ import ui from '../../../scss/ui.module.scss';
 import { createRef } from 'react';
 
 const Messages = (props) => {
+    debugger;
+
     let dialogsElements =
         props.stateMessagesPage.dialogData.map(dialog => <Dialog name={dialog.name} id={dialog.id} />)
 
@@ -14,11 +16,13 @@ const Messages = (props) => {
     let newMessageElement = createRef();
 
     let addMessage = () => {
-        let text = newMessageElement.current.value;
-        props.addMessage(text);
-        newMessageElement.current.value='';
+        props.addMessage();
     }
-    console.log(props);
+
+    let onMessageChange = () => {
+        let text = newMessageElement.current.value;
+        props.updateNewMessageText(text);
+    }
 
     return (
         <div className="body__messages messages-body">
@@ -32,7 +36,12 @@ const Messages = (props) => {
                     </div>
                     <div className="messages-body__form">
                         <div>
-                            <textarea className={ui._area} ref={newMessageElement}></textarea>
+                            <textarea
+                                className={ui._area}
+                                ref={newMessageElement}
+                                onChange={onMessageChange}
+                                value={props.stateMessagesPage.newMessageText}
+                            />
                         </div>
                         <div>
                             <button className={ui._btn} onClick={addMessage}>add message</button>

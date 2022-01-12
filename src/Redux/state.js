@@ -7,14 +7,16 @@ let state = {
             { id: 2, message: 'My second post' },
             { id: 3, message: 'My third post' },
         ],
+        newPostText: 'newPostText',
     },
     stateMessagesPage: {
         messageData: [
             { id: 1, message: 'Hello, my Dear friend!' },
             { id: 2, message: 'I want to say you' },
             { id: 3, message: 'That your message' },
-            { id: 4, message: 'Can help me' },
+            { id: 4, message: 'Make me happy!' },
         ],
+        newMessageText: 'newMessageText',
         dialogData: [
             { id: 1, name: 'Darya' },
             { id: 2, name: 'Maksim' },
@@ -26,23 +28,35 @@ let state = {
     },
 }
 
-export let addPost = (Post) => {
+export let addPost = () => {
     let newPost = {
         id: 4,
-        message: Post,
+        message: state.stateProfilePage.newPostText,
     };
 
     state.stateProfilePage.postData.push(newPost);
+    state.stateProfilePage.newPostText = '';
     rerender(state);
 }
 
-export let addMessage = (Message) => {
+export let updateNewPostText = (newText) => {
+    state.stateProfilePage.newPostText = newText;
+    rerender(state);
+}
+
+export let addMessage = () => {
     let newMessage = {
         id: 5,
-        message: Message,
-    }
+        message: state.stateMessagesPage.newMessageText,
+    };
 
     state.stateMessagesPage.messageData.push(newMessage);
+    state.stateMessagesPage.newMessageText = '';
+    rerender(state);
+}
+
+export let updateNewMessageText = (newText) => {
+    state.stateMessagesPage.newMessageText = newText;
     rerender(state);
 }
 

@@ -5,8 +5,8 @@ const Dialog = (props) => {
     let path = '/messages/' + props.id;
 
     return (
-        <div className="messages-body__dialog">
-            <NavLink to={path}>
+        <div>
+            <NavLink to={path} className="messages-body__dialog">
                 {props.name}
             </NavLink>
         </div>
