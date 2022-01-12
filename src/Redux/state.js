@@ -31,17 +31,16 @@ let state = {
 export let addPost = () => {
     let newPost = {
         id: 4,
-        message: state.stateProfilePage.newPostText,
+        message: state.stateProfilePage.newPostText, // В message добавляется то, что находится в newPostText
     };
-
-    state.stateProfilePage.postData.push(newPost);
-    state.stateProfilePage.newPostText = '';
-    rerender(state);
+    state.stateProfilePage.postData.push(newPost); // Добавляем пост
+    state.stateProfilePage.newPostText = ''; // Очищаем поле ввода
+    rerender(state);// Обновляем страницу
 }
 
 export let updateNewPostText = (newText) => {
-    state.stateProfilePage.newPostText = newText;
-    rerender(state);
+    state.stateProfilePage.newPostText = newText; // Добавляем в newPostText значение, которое приходит из newText
+    rerender(state); // Обновляем страницу
 }
 
 export let addMessage = () => {
@@ -49,7 +48,6 @@ export let addMessage = () => {
         id: 5,
         message: state.stateMessagesPage.newMessageText,
     };
-
     state.stateMessagesPage.messageData.push(newMessage);
     state.stateMessagesPage.newMessageText = '';
     rerender(state);

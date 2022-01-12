@@ -6,15 +6,15 @@ let MyPosts = (props) => {
     let postElements =
         props.postData.map(post => <Post message={post.message} />)
 
-    let newPostElement = createRef();
+    let newPostElement = createRef(); // Получаем доступ к элементу
 
     let addPost = () => {
-        props.addPost();
+        props.addPost(); // Вызываем функцию addPost при клике на кнопку
     }
 
     let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        let text = newPostElement.current.value; // Значение, которое хотим зафиксировать
+        props.updateNewPostText(text); // Вызываем функцию updateNewPostText со значением, которое пришло в text при изменении в textarea
     }
 
     return (
@@ -24,8 +24,8 @@ let MyPosts = (props) => {
                 <div>
                     <textarea
                         className={ui._area}
-                        onChange={onPostChange}
                         ref={newPostElement}
+                        onChange={onPostChange}
                         value={props.newPostText}
                     />
                 </div>
