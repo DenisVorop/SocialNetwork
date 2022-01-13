@@ -5,7 +5,6 @@ import ui from '../../../scss/ui.module.scss';
 import { createRef } from 'react';
 
 const Messages = (props) => {
-    debugger;
 
     let dialogsElements =
         props.stateMessagesPage.dialogData.map(dialog => <Dialog name={dialog.name} id={dialog.id} />)

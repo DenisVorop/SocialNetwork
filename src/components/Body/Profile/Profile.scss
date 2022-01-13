@@ -18,8 +18,11 @@
         }
     }
 
-    &__user {
+    &__user {}
+
+    &__user-info {
         display: flex;
+        align-items: start;
         padding: 20px 20px 10px 20px;
     }
 
@@ -33,7 +36,9 @@
         border-radius: 50%;
     }
 
-    &__info {}
+    &__info {
+        margin: 20px 0px 0px 0px;
+    }
 
     &__posts {
         padding: 10px 20px 20px 20px;

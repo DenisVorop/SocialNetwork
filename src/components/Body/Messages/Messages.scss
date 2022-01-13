@@ -15,18 +15,33 @@
     &__dialogs {
         margin: 0px 10px 0px 0px;
         padding: 0 15px 0 0px;
-        width: 200px;
         border-right: 3px solid rgb(223, 223, 223);
+    }
+
+    &__image img{
+        max-width: 40px;
+        // max-height: 40px;
+        margin: 0px 10px 0px 0px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        border-radius: 50%;
+    }
+
+    &__user {
+        // max-width: 200px;
+        // display: flex;
     }
 
     &__dialog {
         margin: 0px 0px 10px 0px;
-        padding: 10px;
+        padding: 5px 5px 5px 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
         border-radius: 5px;
         display: flex;
         align-items: center;
-
+        width: 100%;
+        &:hover {
+            background-color: rgb(223, 223, 223);
+        }
     }
 
     &__right {
