@@ -1,11 +1,10 @@
-import state, { subscribe } from './Redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { addMessage, addPost, updateNewMessageText, updateNewPostText } from './Redux/state';
 import { BrowserRouter } from 'react-router-dom';
+import store from './Redux/state';
 
 export let rerender = (state) => {
     ReactDOM.render(
@@ -13,10 +12,10 @@ export let rerender = (state) => {
             <BrowserRouter>
                 <App
                     state={state}
-                    addPost={addPost}
-                    addMessage={addMessage}
-                    updateNewPostText={updateNewPostText}
-                    updateNewMessageText={updateNewMessageText} />
+                    addPost={store.addPost.bind(store)}
+                    addMessage={store.addMessage.bind(store)}
+                    updateNewPostText={store.updateNewPostText.bind(store)}
+                    updateNewMessageText={store.updateNewMessageText.bind(store)} />
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
@@ -25,6 +24,6 @@ export let rerender = (state) => {
 
 reportWebVitals();
 
-rerender(state);
+rerender(store.getState());
 
-subscribe(rerender); // Передаем ф-цию rerender и отправляем subscribe в state.js
+store.subscribe(rerender); // Передаем ф-цию rerender и отправляем subscribe в state.js
