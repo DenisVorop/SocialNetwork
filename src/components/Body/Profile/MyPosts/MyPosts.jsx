@@ -9,12 +9,13 @@ let MyPosts = (props) => {
     let newPostElement = createRef(); // Получаем доступ к элементу
 
     let addPost = () => {
-        props.addPost(); // Вызываем функцию addPost при клике на кнопку
+        props.dispatch({type: 'ADD-POST'}); // Вызываем функцию addPost при клике на кнопку
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value; // Значение, которое хотим зафиксировать
-        props.updateNewPostText(text); // Вызываем функцию updateNewPostText со значением, которое пришло в text при изменении в textarea
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text}; // Можно в одну строку без let
+        props.dispatch(action); // Вызываем функцию updateNewPostText со значением, которое пришло в text при изменении в textarea
     }
 
     return (

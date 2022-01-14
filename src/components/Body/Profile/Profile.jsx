@@ -14,9 +14,8 @@ let Profile = (props) => {
             <div className="profile-body__posts">
                 <MyPosts
                     postData={props.stateProfilePage.postData}
-                    addPost={props.addPost}
                     newPostText={props.stateProfilePage.newPostText}
-                    updateNewPostText={props.updateNewPostText} />
+                    dispatch={props.dispatch} />
             </div>
         </div>
     );

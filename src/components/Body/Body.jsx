@@ -18,13 +18,11 @@ const Body = (props) => {
                         <Route path='/profile'
                             element={<Profile
                                 stateProfilePage={props.statePages.stateProfilePage}
-                                updateNewPostText={props.updateNewPostText}
-                                addPost={props.addPost} />} />
+                                dispatch={props.dispatch} />} />
                         <Route path='/messages/*'
                             element={<Messages
                                 stateMessagesPage={props.statePages.stateMessagesPage}
-                                updateNewMessageText={props.updateNewMessageText}
-                                addMessage={props.addMessage}/>} />
+                                dispatch={props.dispatch} />} />
                         <Route path='/news' element={<News />} />
                         <Route path='/music' element={<Music />} />
                         <Route path='/settings' element={<Settings />} />

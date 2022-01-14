@@ -15,10 +15,7 @@ const App = (props) => {
             <Header />
             <main className='page'>
                 <Body statePages={props.state}
-                    addPost={props.addPost}
-                    addMessage={props.addMessage}
-                    updateNewPostText={props.updateNewPostText}
-                    updateNewMessageText={props.updateNewMessageText}/>
+                    dispatch={props.dispatch} />
             </main>
         </div>
     );
