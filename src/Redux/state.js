@@ -1,4 +1,6 @@
-import { rerender } from "../render";
+let rerender = () => { // Находим ф-цию rerender и присваеваем ей observer, в котором rerender из index.js
+
+}
 
 let state = {
     stateProfilePage: {
@@ -28,7 +30,7 @@ let state = {
     },
 }
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 4,
         message: state.stateProfilePage.newPostText, // В message добавляется то, что находится в newPostText
@@ -38,12 +40,12 @@ export let addPost = () => {
     rerender(state);// Обновляем страницу
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
     state.stateProfilePage.newPostText = newText; // Добавляем в newPostText значение, которое приходит из newText
     rerender(state); // Обновляем страницу
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
     let newMessage = {
         id: 5,
         message: state.stateMessagesPage.newMessageText,
@@ -53,9 +55,14 @@ export let addMessage = () => {
     rerender(state);
 }
 
-export let updateNewMessageText = (newText) => {
+export const updateNewMessageText = (newText) => {
     state.stateMessagesPage.newMessageText = newText;
     rerender(state);
+}
+
+export const subscribe = (observer) => { // получаем rerender из index.js
+    rerender = observer; // выпрыгиваем из ф-ции в поисках rerender, присваем rerender из index.js в rerender из state.js через observer
+    // Наблюдатель (паттерн - observer)
 }
 
 export default state;
