@@ -3,6 +3,9 @@ import Message from './Message/Message'
 import './Messages.scss'
 import ui from '../../../scss/ui.module.scss';
 import { createRef } from 'react';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../Redux/state';
+
+//========================================================================================================================================================
 
 const Messages = (props) => {
 
@@ -15,15 +18,15 @@ const Messages = (props) => {
     let newMessageElement = createRef();
 
     let addMessage = () => {
-        props.dispatch({type: 'ADD-MESSAGE'});
+        props.dispatch(addMessageActionCreator());
     }
 
     let onMessageChange = () => {
         let text = newMessageElement.current.value;
-        let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text};
+        let action = updateNewMessageTextActionCreator(text);
         props.dispatch(action);
     }
-    debugger;
+
     return (
         <div className="body__messages messages-body">
             <div className='messages-body__row'>

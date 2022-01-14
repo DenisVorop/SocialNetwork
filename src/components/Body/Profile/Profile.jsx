@@ -2,6 +2,8 @@ import './Profile.scss';
 import MyPosts from './MyPosts/MyPosts';
 import UserInfo from './UserInfo/UserInfo';
 
+//========================================================================================================================================================
+
 let Profile = (props) => {
     return (
         <div className="body__profile profile-body">
