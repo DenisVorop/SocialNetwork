@@ -1,25 +1,21 @@
 import Post from "./Post/Post";
 import ui from '../../../../scss/ui.module.scss';
-import { createRef } from "react";
-import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../../Redux/profileReducer";
 
 //========================================================================================================================================================
 
 let MyPosts = (props) => {
-    let postElements =
-        props.postData.map(post => <Post message={post.message} />)
+    let postElements = props.posts.map(post => <Post message={post.message} />)
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator()); // Вызываем функцию addPost при клике на кнопку
+    let onAddPost = () => {
+        props.addPost();
     }
 
     let onPostChange = (e) => {
-        let newPostElement = e.target.value; // Получаем значение элемента
-        let text = newPostElement; // Значение, которое хотим зафиксировать
-        let action = updateNewPostTextActionCreator(text); // Можно в одну строку без let
-        props.dispatch(action); // Вызываем функцию updateNewPostText со значением, которое пришло в text при изменении в textarea
+        let newPostElement = e.target.value;
+        let text = newPostElement; // Получаем значение элемента
+        props.updateNewPostText(text); // Вызываем функцию postChange со значением, которое пришло в text при изменении в textarea
     }
-
+    // debugger
     return (
         <div className="profile-body__input">
             <div className="profile-body__my">My posts</div>
@@ -32,7 +28,7 @@ let MyPosts = (props) => {
                     />
                 </div>
                 <div>
-                    <button className={ui._btn} onClick={addPost}>add post</button>
+                    <button className={ui._btn} onClick={onAddPost}>add post</button>
                 </div>
                 {postElements}
             </div>

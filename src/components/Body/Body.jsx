@@ -6,6 +6,7 @@ import Music from './Music/Music';
 import Settings from './Settings/Settings';
 import './Body.scss';
 import { Route, Routes } from 'react-router-dom';
+import store from '../../Redux/store';
 
 //========================================================================================================================================================
 
@@ -17,9 +18,7 @@ const Body = (props) => {
                     <Navigation />
                     <Routes>
                         <Route path='/profile'
-                            element={<Profile
-                                stateProfilePage={props.statePages.stateProfilePage}
-                                dispatch={props.dispatch} />} />
+                            element={<Profile store={store}/>} />
                         <Route path='/messages/*'
                             element={<Messages
                                 stateMessagesPage={props.statePages.stateMessagesPage}
