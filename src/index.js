@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import store from './Redux/state';
+import store from './Redux/redux-store';
+
+//========================================================================================================================================================
 
 export let rerender = (state) => {
     ReactDOM.render(
@@ -19,8 +21,13 @@ export let rerender = (state) => {
     );
 }
 
+//========================================================================================================================================================
+
 reportWebVitals();
 
 rerender(store.getState());
 
-store.subscribe(rerender); // Передаем ф-цию rerender и отправляем subscribe в state.js
+store.subscribe(() => {
+    let state = store.getState();
+    rerender(state);
+}); // Передаем ф-цию rerender и отправляем subscribe в state.js

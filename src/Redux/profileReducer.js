@@ -3,7 +3,16 @@ const UPDATE_NEW_POST_TEXT = 'UDATE-NEW-POST-TEXT';
 
 //========================================================================================================================================================
 
-const profileReducer = (state, action) => {
+let initialState = {
+    postData: [
+        { id: 1, message: 'My first post' },
+        { id: 2, message: 'My second post' },
+        { id: 3, message: 'My third post' },
+    ],
+    newPostText: 'newPostText',
+}
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -33,5 +42,7 @@ export const updateNewPostTextActionCreator = (text) => {
         newText: text,
     })
 }
+
+//========================================================================================================================================================
 
 export default profileReducer;

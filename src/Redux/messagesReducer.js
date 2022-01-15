@@ -3,7 +3,25 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 //========================================================================================================================================================
 
-const messagesReducer = (state, action) => {
+let initialState = {
+    messageData: [
+        { id: 1, message: 'Hello, my Dear friend!' },
+        { id: 2, message: 'I want to say you' },
+        { id: 3, message: 'That your message' },
+        { id: 4, message: 'Make me happy!' },
+    ],
+    newMessageText: 'newMessageText',
+    dialogData: [
+        { id: 1, name: 'Darya' },
+        { id: 2, name: 'Maksim' },
+        { id: 3, name: 'Fuad' },
+        { id: 4, name: 'Faig' },
+        { id: 5, name: 'Anatolich' },
+        { id: 6, name: 'Denis' },
+    ],
+}
+
+const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
@@ -31,5 +49,7 @@ export const updateNewMessageTextActionCreator = (text) => {
         newText: text,
     })
 }
+
+//========================================================================================================================================================
 
 export default messagesReducer;
