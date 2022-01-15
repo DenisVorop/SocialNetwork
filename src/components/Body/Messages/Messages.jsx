@@ -3,7 +3,7 @@ import Message from './Message/Message'
 import './Messages.scss'
 import ui from '../../../scss/ui.module.scss';
 import { createRef } from 'react';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../Redux/state';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../Redux/messagesReducer';
 
 //========================================================================================================================================================
 
@@ -15,14 +15,13 @@ const Messages = (props) => {
     let messagesElements =
         props.stateMessagesPage.messageData.map(message => <Message textMessage={message.message} />)
 
-    let newMessageElement = createRef();
-
     let addMessage = () => {
         props.dispatch(addMessageActionCreator());
     }
 
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
+    let onMessageChange = (e) => {
+        let newMessageElement = e.target.value;
+        let text = newMessageElement;
         let action = updateNewMessageTextActionCreator(text);
         props.dispatch(action);
     }
@@ -41,7 +40,6 @@ const Messages = (props) => {
                         <div>
                             <textarea
                                 className={ui._area}
-                                ref={newMessageElement}
                                 onChange={onMessageChange}
                                 value={props.stateMessagesPage.newMessageText}
                             />

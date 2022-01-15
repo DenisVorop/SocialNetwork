@@ -1,9 +1,5 @@
-//========================================================================================================================================================
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import messagesReducer from "./messagesReducer";
+import profileReducer from "./profileReducer";
 
 //========================================================================================================================================================
 
@@ -38,7 +34,7 @@ let store = {
     _callSubscriber() { // Находим ф-цию rerender и присваеваем ей observer, в котором rerender из index.js
     },
 
-//========================================================================================================================================================
+    //========================================================================================================================================================
 
     getState() { // Создали, чтобы не обращаться напрямую к _state (_ подразумевает запрет на прямое обращение)
         return this._state;
@@ -48,59 +44,18 @@ let store = {
         // Наблюдатель (паттерн - observer)
     },
 
-//========================================================================================================================================================
+    //========================================================================================================================================================
 
     dispatch(action) { // action - object
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 4,
-                message: this._state.stateProfilePage.newPostText, // В message добавляется то, что находится в newPostText
-            };
-            this._state.stateProfilePage.postData.push(newPost); // Добавляем пост
-            this._state.stateProfilePage.newPostText = ''; // Очищаем поле ввода
-            this._callSubscriber(this._state);// Обновляем страницу
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.stateProfilePage.newPostText = action.newText; // Добавляем в newPostText значение, которое приходит из newText
-            this._callSubscriber(this._state); // Обновляем страницу
-        } else if (action.type === 'ADD-MESSAGE') {
-            let newMessage = {
-                id: 5,
-                message: this._state.stateMessagesPage.newMessageText,
-            };
-            this._state.stateMessagesPage.messageData.push(newMessage);
-            this._state.stateMessagesPage.newMessageText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.stateMessagesPage.newMessageText = action.newText;
-            this._callSubscriber(this._state);
-        }
-    },
+        this._state.stateProfilePage = profileReducer(this._state.stateProfilePage, action)
+        this._state.stateMessagesPage = messagesReducer(this._state.stateMessagesPage, action)
+
+        this._callSubscriber(this._state);
+    }
 }
 
 //========================================================================================================================================================
 
-export const addPostActionCreator = () => {
-    return ({
-        type: ADD_POST,
-    })
-}
-export const updateNewPostTextActionCreator = (text) => {
-    return ({
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    })
-}
-export const addMessageActionCreator = () => {
-    return ({
-        type: ADD_MESSAGE,
-    })
-}
-export const updateNewMessageTextActionCreator = (text) => {
-    return ({
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newText: text,
-    })
-}
 
 //========================================================================================================================================================
 
