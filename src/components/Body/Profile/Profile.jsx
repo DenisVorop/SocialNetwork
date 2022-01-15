@@ -4,7 +4,7 @@ import UserInfo from './UserInfo/UserInfo';
 
 //========================================================================================================================================================
 
-let Profile = (props) => {
+let Profile = () => {
     return (
         <div className="body__profile profile-body">
             <div className="profile-body__board">
@@ -14,7 +14,7 @@ let Profile = (props) => {
                 <UserInfo />
             </div>
             <div className="profile-body__posts">
-                <MyPostsContainer store={props.store} />
+                <MyPostsContainer />
             </div>
         </div>
     );

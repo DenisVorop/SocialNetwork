@@ -11,12 +11,12 @@ import Body from './components/Body/Body';
 
 //========================================================================================================================================================
 
-const App = (props) => {
+const App = () => {
     return (
         <div className='wrapper'>
             <Header />
             <main className='page'>
-                <Body store={props.store}/>
+                <Body />
             </main>
         </div>
     );

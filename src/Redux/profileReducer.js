@@ -14,19 +14,23 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 id: 4,
                 message: state.newPostText, // В message добавляется то, что находится в newPostText
             };
-            state.postData.push(newPost); // Добавляем пост
-            state.newPostText = ''; // Очищаем поле ввода
-            return state;
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText; // Добавляем в newPostText значение, которое приходит из newText
-            return state;
+            let stateCopy = { ...state };
+            stateCopy.postData = [ ...state.postData ];
+            stateCopy.postData.push(newPost); // Добавляем пост
+            stateCopy.newPostText = ''; // Очищаем поле ввода
+            return stateCopy;
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            let stateCopy = { ...state };
+            stateCopy.newPostText = action.newText; // Добавляем в newPostText значение, которое приходит из newText
+            return stateCopy;
+        }
         default: return state;
-
     }
 }
 
