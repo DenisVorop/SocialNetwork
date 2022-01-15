@@ -16,8 +16,7 @@ const App = (props) => {
         <div className='wrapper'>
             <Header />
             <main className='page'>
-                <Body statePages={props.state}
-                    dispatch={props.dispatch}/>
+                <Body store={props.store}/>
             </main>
         </div>
     );

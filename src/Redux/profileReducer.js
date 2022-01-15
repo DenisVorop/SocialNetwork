@@ -1,5 +1,5 @@
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UDATE-NEW-POST-TEXT';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 //========================================================================================================================================================
 

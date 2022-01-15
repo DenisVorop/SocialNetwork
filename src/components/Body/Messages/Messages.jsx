@@ -2,8 +2,6 @@ import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 import './Messages.scss'
 import ui from '../../../scss/ui.module.scss';
-import { createRef } from 'react';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../Redux/messagesReducer';
 
 //========================================================================================================================================================
 
@@ -15,15 +13,14 @@ const Messages = (props) => {
     let messagesElements =
         props.stateMessagesPage.messageData.map(message => <Message textMessage={message.message} />)
 
-    let addMessage = () => {
-        props.dispatch(addMessageActionCreator());
+    let onAddMessage = () => {
+        props.addMessage();
     }
 
     let onMessageChange = (e) => {
         let newMessageElement = e.target.value;
         let text = newMessageElement;
-        let action = updateNewMessageTextActionCreator(text);
-        props.dispatch(action);
+        props.updateNewMessageText(text);
     }
 
     return (
@@ -45,7 +42,7 @@ const Messages = (props) => {
                             />
                         </div>
                         <div>
-                            <button className={ui._btn} onClick={addMessage}>add message</button>
+                            <button className={ui._btn} onClick={onAddMessage}>add message</button>
                         </div>
                     </div>
                 </div>
