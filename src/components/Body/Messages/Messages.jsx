@@ -8,10 +8,10 @@ import ui from '../../../scss/ui.module.scss';
 const Messages = (props) => {
 
     let dialogsElements =
-        props.stateMessagesPage.dialogData.map(dialog => <Dialog name={dialog.name} id={dialog.id} />)
+        props.stateMessagesPage.dialogData.map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />)
 
     let messagesElements =
-        props.stateMessagesPage.messageData.map(message => <Message textMessage={message.message} />)
+        props.stateMessagesPage.messageData.map(message => <Message textMessage={message.message} key={message.id} />)
 
     let onAddMessage = () => {
         props.addMessage();
@@ -35,7 +35,7 @@ const Messages = (props) => {
                     </div>
                     <div className="messages-body__form">
                         <div>
-                            <textarea
+                            <textarea placeholder='Write smth here and tap to btn'
                                 className={ui._area}
                                 onChange={onMessageChange}
                                 value={props.stateMessagesPage.newMessageText}

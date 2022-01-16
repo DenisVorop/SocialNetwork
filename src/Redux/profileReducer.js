@@ -9,7 +9,7 @@ let initialState = {
         { id: 2, message: 'My second post' },
         { id: 3, message: 'My third post' },
     ],
-    newPostText: 'newPostText',
+    newPostText: '',
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -17,18 +17,19 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             let newPost = {
                 id: 4,
-                message: state.newPostText, // В message добавляется то, что находится в newPostText
+                message: state.newPostText,
             };
-            let stateCopy = { ...state };
-            stateCopy.postData = [ ...state.postData ];
-            stateCopy.postData.push(newPost); // Добавляем пост
-            stateCopy.newPostText = ''; // Очищаем поле ввода
-            return stateCopy;
+            return {
+                ...state,
+                postData: [...state.postData, newPost],
+                newPostText: '',
+            };
         }
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = { ...state };
-            stateCopy.newPostText = action.newText; // Добавляем в newPostText значение, которое приходит из newText
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.newText,
+            };
         }
         default: return state;
     }
