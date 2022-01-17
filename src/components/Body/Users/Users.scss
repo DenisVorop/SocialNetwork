@@ -1,0 +1,57 @@
+.body__users {}
+
+.users-body {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__card {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        margin: 25px 25px 25px 25px;
+    }
+}
+
+.card-users-body {
+    min-width: 250px;
+    min-height: 300px;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    &__header {
+        display: flex;
+        align-items: center;
+        margin: 0px 0px 10px 0px;
+    }
+
+    &__image {
+        margin: 0px 10px 0px 0px;
+    }
+
+    &__image img {
+        width: 50px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+    }
+
+    &__name {}
+
+    &__location {}
+
+    &__country {}
+
+    &__city {}
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        margin: 0px;
+    }
+}

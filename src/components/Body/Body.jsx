@@ -6,6 +6,7 @@ import Settings from './Settings/Settings';
 import './Body.scss';
 import { Route, Routes } from 'react-router-dom';
 import MessagesContainer from './Messages/MessagesContainer';
+import UsersContainer from './Users/UsersContainer';
 
 //========================================================================================================================================================
 
@@ -20,6 +21,8 @@ const Body = (props) => {
                             element={<Profile />} />
                         <Route path='/messages/*'
                             element={<MessagesContainer />} />
+                        <Route path='/Users/'
+                            element={<UsersContainer />} />
                         <Route path='/news' element={<News />} />
                         <Route path='/music' element={<Music />} />
                         <Route path='/settings' element={<Settings />} />
