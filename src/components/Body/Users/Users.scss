@@ -4,18 +4,32 @@
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    display: flex;
-    flex-wrap: wrap;
-
+    &__cards {
+        display: flex;
+        flex-wrap: wrap;
+    }
     &__card {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
         border-radius: 5px;
         margin: 25px 25px 25px 25px;
     }
+    &__pages {
+        display: flex;
+        justify-content: center;
+    }
+    &__page {
+        cursor: pointer;
+        margin: 0px 5px 0px 0px;
+        height: 35px;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .card-users-body {
-    min-width: 250px;
+    width: 257px;
     min-height: 300px;
     padding: 10px;
     overflow: hidden;
@@ -41,7 +55,10 @@
         flex: 1 1 auto;
     }
 
-    &__name {}
+    &__name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     &__location {}
 

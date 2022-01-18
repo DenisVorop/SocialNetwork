@@ -10,8 +10,16 @@ import React from 'react';
 class Users extends React.Component {
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count={this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items);
+        });
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count={this.props.pageSize}`).then(response => {
+            this.props.setUsers(response.data.items);
+            this.props.setTotalUsersCount(response.data.totalCount);
         });
     }
 
@@ -53,36 +61,56 @@ class Users extends React.Component {
     // }
 
     render() {
-        return <div className='body__users users-body'> {
-            this.props.usersData.map(user =>
-                <div key={user.id}>
-                    <div className="users-body__card card-users-body">
-                        <div className="card-users-body__header">
-                            <div className="card-users-body__image">
-                                <img src={user.photos.small != null ? unfollowActionCreator.photos.small : userPhoto} />
-                            </div>
-                            <div className="card-users-body__name">
-                                {user.name}
-                            </div>
-                        </div>
-                        <div className="card-users-body__info">
-                            <div className="card-users-body__location">
-                                <div className="card-users-body__country">
-                                    {/* {user.location.country} */}
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            if (pages.length < 10) {
+                pages.push(i);
+            }
+        }
+
+        return <div className='body__users users-body'>
+            <div className='users-body__cards'>
+                {
+                    this.props.usersData.map(user =>
+                        <div key={user.id}>
+                            <div className="users-body__card card-users-body">
+                                <div className="card-users-body__header">
+                                    <div className="card-users-body__image">
+                                        <img src={user.photos.small != null ? unfollowActionCreator.photos.small : userPhoto} />
+                                    </div>
+                                    <div className="card-users-body__name">
+                                        {user.name}
+                                    </div>
                                 </div>
-                                <div className="card-users-body__city">
-                                    {/* {user.location.city} */}
+                                <div className="card-users-body__info">
+                                    <div className="card-users-body__location">
+                                        <div className="card-users-body__country">
+                                            {/* {user.location.country} */}
+                                        </div>
+                                        <div className="card-users-body__city">
+                                            {/* {user.location.city} */}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="card-users-body__button">
+                                    {user.followed
+                                        ? <button onClick={() => { this.props.unfollow(user.id) }} className={ui._btn}>Follow</button>
+                                        : <button onClick={() => { this.props.follow(user.id) }} className={ui._btn}>unFollow</button>}
                                 </div>
                             </div>
                         </div>
-                        <div className="card-users-body__button">
-                            {user.followed
-                                ? <button onClick={() => { this.props.unfollow(user.id) }} className={ui._btn}>Follow</button>
-                                : <button onClick={() => { this.props.follow(user.id) }} className={ui._btn}>unFollow</button>}
-                        </div>
-                    </div>
-                </div>)
-        } </div>
+                    )
+                }
+            </div>
+            <div className='users-body__pages'>
+                {pages.map(pages => {
+                    return <div className='users-body__page'><div onClick={(e) => { this.onPageChanged(pages) }} className={this.props.currentPage === pages && ui.selected}>{pages}</div></div>
+                })}
+            </div>
+        </div>
     }
 }
 
