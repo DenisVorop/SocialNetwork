@@ -1,9 +1,12 @@
-.body__users {}
-
-.users-body {
+.body__page {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
+}
+
+.body__users {}
+
+.users-body {
     &__cards {
         display: flex;
         flex-wrap: wrap;
