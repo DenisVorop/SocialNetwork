@@ -1,10 +1,11 @@
 import preloader from '../../../assets/images/preloader.svg'
+import ui from '../../../scss/ui.module.scss';
 
 //========================================================================================================================================================
 
 const Preloader = (props) => {
     return (
-        <div>
+        <div className={ui.preloader}>
             <img src={preloader} />
         </div>
     )
