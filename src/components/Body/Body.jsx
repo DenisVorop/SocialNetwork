@@ -1,5 +1,4 @@
 import Navigation from './Navigation/Navigation';
-import Profile from './Profile/Profile';
 import News from './News/News';
 import Music from './Music/Music';
 import Settings from './Settings/Settings';
@@ -7,6 +6,7 @@ import './Body.scss';
 import { Route, Routes } from 'react-router-dom';
 import MessagesContainer from './Messages/MessagesContainer';
 import UsersContainer from './Users/UsersContainer';
+import ProfileContainer from './Profile/ProfileContainer';
 
 //========================================================================================================================================================
 
@@ -17,8 +17,8 @@ const Body = (props) => {
                 <div className="body__row">
                     <Navigation />
                     <Routes>
-                        <Route path='/profile'
-                            element={<Profile />} />
+                        <Route path='/profile/*'
+                            element={<ProfileContainer />} />
                         <Route path='/messages/*'
                             element={<MessagesContainer />} />
                         <Route path='/Users/'

@@ -1,6 +1,7 @@
 import ui from '../../../scss/ui.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import Preloader from '../../common/preloader/Preloader';
+import { NavLink } from 'react-router-dom';
 
 //========================================================================================================================================================
 
@@ -24,9 +25,11 @@ const Users = (props) => {
                             <div key={user.id}>
                                 <div className="users-body__card card-users-body">
                                     <div className="card-users-body__header">
-                                        <div className="card-users-body__image">
-                                            <img src={user.photos.small != null ? user.photos.small : userPhoto} />
-                                        </div>
+                                        <NavLink to='/profile'>
+                                            <div className="card-users-body__image">
+                                                <img src={user.photos.small != null ? user.photos.small : userPhoto} />
+                                            </div>
+                                        </NavLink>
                                         <div className="card-users-body__name">
                                             {user.name}
                                         </div>

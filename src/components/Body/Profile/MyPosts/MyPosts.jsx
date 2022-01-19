@@ -4,7 +4,7 @@ import ui from '../../../../scss/ui.module.scss';
 //========================================================================================================================================================
 
 let MyPosts = (props) => {
-    let postElements = props.posts.map(post => <Post message={post.message} key={post.id}/>)
+    let postElements = props.posts.map(post => <Post message={post.message} key={post.id} />)
 
     let onAddPost = () => {
         props.addPost();
@@ -17,22 +17,24 @@ let MyPosts = (props) => {
     }
 
     return (
-        <div className="profile-body__input">
-            <div className="profile-body__my">My posts</div>
-            <div className="profile-body__myPosts">
-                <div className="profile-body__form">
-                    <div>
-                        <textarea placeholder="Write smth here and tap to btn"
-                            className={ui._area}
-                            onChange={onPostChange}
-                            value={props.newPostText}
-                        />
+        <div className="profile-body__posts">
+            <div className="profile-body__input">
+                <div className="profile-body__my">My posts</div>
+                <div className="profile-body__myPosts">
+                    <div className="profile-body__form">
+                        <div>
+                            <textarea placeholder="Write smth here and tap to btn"
+                                className={ui._area}
+                                onChange={onPostChange}
+                                value={props.newPostText}
+                            />
+                        </div>
+                        <div>
+                            <button className={ui._btn} onClick={onAddPost}>add post</button>
+                        </div>
                     </div>
-                    <div>
-                        <button className={ui._btn} onClick={onAddPost}>add post</button>
-                    </div>
+                    {postElements}
                 </div>
-                {postElements}
             </div>
         </div>
     );

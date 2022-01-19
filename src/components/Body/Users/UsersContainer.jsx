@@ -1,9 +1,9 @@
-import { connect } from "react-redux"
 import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollow, } from "../../../Redux/usersReducer"
 import Users from "./Users"
 import './Users.scss';
 import axios from 'axios';
 import React from 'react';
+import { connect } from "react-redux"
 
 //========================================================================================================================================================
 
