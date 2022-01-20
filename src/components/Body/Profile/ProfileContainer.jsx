@@ -3,13 +3,16 @@ import axios from 'axios';
 import React from 'react';
 import { connect } from "react-redux"
 import { setUserProfile } from '../../../Redux/profileReducer';
+import { useParams } from 'react-router-dom';
 
 //========================================================================================================================================================
-
 class ProfileContainer extends React.Component {
+
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
-            this.props.setUserProfile(response.data);
+        let userId = this.props.params ? this.props.params.userId : '21768';
+        debugger
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(({ data }) => {
+            this.props.setUserProfile(data);
         });
     }
 
@@ -20,14 +23,23 @@ class ProfileContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         profile: state.stateProfilePage.profile,
     }
 }
-let mapDispatchToProps = {
+const mapDispatchToProps = {
     setUserProfile,
 }
+
+const ProfileURLMatch = (props) => {
+    const params = useParams();
+    // console.log(params)
+    return (
+        <ProfileContainer {...props} params={params}/>
+    );
+}
+
 //========================================================================================================================================================
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileURLMatch);

@@ -1,4 +1,3 @@
-import Preloader from '../../common/preloader/Preloader';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import './Profile.scss';
 import UserInfo from './UserInfo/UserInfo';
@@ -6,10 +5,6 @@ import UserInfo from './UserInfo/UserInfo';
 //========================================================================================================================================================
 
 let Profile = (props) => {
-    if (!props.profile) {
-        return <Preloader />
-    }
-
     return (
         <div className="body__profile profile-body">
             <div className="profile-body__board">

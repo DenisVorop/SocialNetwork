@@ -8,7 +8,7 @@ const Navigation = () => {
     return (
         <div className="body__navigation navigation-body">
             <ul className="navigation-body__list">
-                <NavLink to="/profile" className = { navData => navData.isActive ? ui.nav_active : ui.nav }><li className="navigation-body__link">Profile</li></NavLink>
+                <NavLink to="/profile/21768" className = { navData => navData.isActive ? ui.nav_active : ui.nav }><li className="navigation-body__link">Profile</li></NavLink>
                 <NavLink to="/messages" className = { navData => navData.isActive ? ui.nav_active : ui.nav }><li className="navigation-body__link">Messages</li></NavLink>
                 <NavLink to="/users" className = { navData => navData.isActive ? ui.nav_active : ui.nav }><li className="navigation-body__link">Users</li></NavLink>
                 <NavLink to="/news" className = { navData => navData.isActive ? ui.nav_active : ui.nav }><li className="navigation-body__link">News</li></NavLink>

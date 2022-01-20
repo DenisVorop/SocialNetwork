@@ -10,14 +10,14 @@ import ProfileContainer from './Profile/ProfileContainer';
 
 //========================================================================================================================================================
 
-const Body = (props) => {
+const Body = () => {
     return (
         <div className="body">
             <div className="body__container">
                 <div className="body__row">
                     <Navigation />
                     <Routes>
-                        <Route path='/profile/*'
+                        <Route path='/profile/:userId'
                             element={<ProfileContainer />} />
                         <Route path='/messages/*'
                             element={<MessagesContainer />} />
