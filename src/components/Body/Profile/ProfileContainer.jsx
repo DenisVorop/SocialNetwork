@@ -10,7 +10,6 @@ class ProfileContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.params ? this.props.params.userId : '21768';
-        debugger
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(({ data }) => {
             this.props.setUserProfile(data);
         });
@@ -34,7 +33,6 @@ const mapDispatchToProps = {
 
 const ProfileURLMatch = (props) => {
     const params = useParams();
-    // console.log(params)
     return (
         <ProfileContainer {...props} params={params}/>
     );

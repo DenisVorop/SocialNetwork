@@ -6,15 +6,15 @@ import './App.scss';
 
 //========================================================================================================================================================
 
-import Header from './components/Header/Header';
 import Body from './components/Body/Body';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 //========================================================================================================================================================
 
 const App = () => {
     return (
         <div className='wrapper'>
-            <Header />
+            <HeaderContainer />
             <main className='page'>
                 <Body />
             </main>
