@@ -1,0 +1,89 @@
+.messages-body {
+  min-height: 700px;
+  background: #fff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding: 25px 15px;
+}
+
+.messages-body__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100%;
+}
+
+.messages-body__dialogs {
+  margin: 0px 10px 0px 0px;
+  padding: 0 15px 0 0px;
+  border-right: 3px solid #dfdfdf;
+}
+
+.messages-body__image img {
+  max-width: 30px;
+  margin: 0px 10px 0px 0px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+}
+
+.messages-body__dialog {
+  margin: 0px 0px 10px 0px;
+  padding: 5px 5px 5px 5px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.messages-body__dialog:hover {
+  background-color: #dfdfdf;
+}
+
+.messages-body__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.messages-body__messages {
+  padding: 10px;
+  height: 650px;
+  overflow-x: scroll;
+}
+
+.messages-body__message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
+  width: 350px;
+}
+
+.messages-body__form {
+  padding: 10px;
+  border-top: 1px solid #dfdfdf;
+}
+/*# sourceMappingURL=Messages.css.map */

@@ -1,0 +1,25 @@
+.navigation-body {
+  margin: 0px 15px 0px 0px;
+  background: #fff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+
+.navigation-body__list {
+  text-align: center;
+  padding: 20px 20px 0px 20px;
+}
+
+.navigation-body__link {
+  background: #fff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin: 0px 0px 10px 0px;
+  padding: 5px;
+}
+
+.navigation-body__link:hover {
+  background-color: #dfdfdf;
+}
+/*# sourceMappingURL=Navigation.css.map */
