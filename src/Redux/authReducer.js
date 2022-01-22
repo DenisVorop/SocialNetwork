@@ -1,3 +1,5 @@
+import { authAPI } from "../api/api";
+
 const SET_USER_DATA = 'SET-USER-DATA';
 
 //========================================================================================================================================================
@@ -22,6 +24,8 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
+//=========ACTION CREATORS===============================================================================================================================================
+
 export const setAuthUserData = (id, email, login) => {
     return ({
         type: SET_USER_DATA,
@@ -31,6 +35,19 @@ export const setAuthUserData = (id, email, login) => {
             login,
         },
     })
+}
+
+//================THUNK CREATORS========================================================================================================================================
+
+export const getAuth = () => {
+    return (dispatch) => {
+        authAPI.getAuth().then(response => {
+            if (response.data.resultCode === 0) {
+                let { id, email, login } = response.data.data;
+                dispatch(setAuthUserData(id, email, login));
+            }
+        });
+    }
 }
 
 //========================================================================================================================================================
