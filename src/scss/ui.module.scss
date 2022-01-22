@@ -16,6 +16,9 @@
     &:hover {
         background-color: rgb(223, 223, 223);
     }
+    &:disabled {
+        border: 1px solid blue;
+    }
 }
 
 ._area {

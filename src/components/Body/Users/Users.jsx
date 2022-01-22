@@ -47,7 +47,8 @@ const Users = (props) => {
                                     </div>
                                     <div className="card-users-body__button">
                                         {user.followed
-                                            ? <button onClick={() => {
+                                            ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                                                props.toggleFolowingProgress(true, user.id);
                                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
                                                     withCredentials: true,
                                                     headers: {
@@ -57,10 +58,12 @@ const Users = (props) => {
                                                         if (response.data.resultCode === 0) {
                                                             props.unfollow(user.id)
                                                         }
+                                                        props.toggleFolowingProgress(false, user.id);
                                                     });
                                             }} className={ui._btn}>unFollow</button>
 
-                                            : <button onClick={() => {
+                                            : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                                                props.toggleFolowingProgress(true, user.id);
                                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,{}, {
                                                     withCredentials: true,
                                                     headers: {
@@ -70,6 +73,7 @@ const Users = (props) => {
                                                         if (response.data.resultCode === 0) {
                                                             props.follow(user.id)
                                                         }
+                                                        props.toggleFolowingProgress(false, user.id);
                                                     });
                                             }} className={ui._btn}>Follow</button>}
                                     </div>
