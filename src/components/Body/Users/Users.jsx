@@ -1,7 +1,7 @@
 import ui from '../../../scss/ui.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import Preloader from '../../common/preloader/Preloader';
-import { Navigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 //========================================================================================================================================================
 
@@ -15,8 +15,6 @@ const Users = (props) => {
             pages.push(i);
         }
     }
-
-    if (!props.isAuth) return <Navigate to='/login' />;
 
     return <>
         <div className="body__page">

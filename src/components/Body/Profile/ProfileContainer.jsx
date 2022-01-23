@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from "react-redux"
 import { setUser, setUserProfile } from '../../../Redux/profileReducer';
 import { useParams } from 'react-router-dom';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
 //========================================================================================================================================================
 class ProfileContainer extends React.Component {
@@ -22,7 +23,6 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.stateProfilePage.profile,
-        isAuth: state.authReducer.isAuth,
     }
 }
 const mapDispatchToProps = {
@@ -30,10 +30,12 @@ const mapDispatchToProps = {
     setUser,
 }
 
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 const ProfileURLMatch = (props) => {
     const params = useParams();
     return (
-        <ProfileContainer {...props} params={params} />
+        <AuthRedirectComponent {...props} params={params} />
     );
 }
 

@@ -4,6 +4,7 @@ import './Users.scss';
 import React from 'react';
 import { connect } from "react-redux"
 import Preloader from "../../common/preloader/Preloader";
+import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
 
 //========================================================================================================================================================
 class UsersContainer extends React.Component {
@@ -30,7 +31,6 @@ class UsersContainer extends React.Component {
                 followingInProgress={this.props.followingInProgress}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
-                isAuth={this.props.isAuth}
             />
         </>
     }
@@ -44,7 +44,6 @@ let mapStateToProps = (state) => {
         currentPage: state.stateUsersPage.currentPage,
         isFetching: state.stateUsersPage.isFetching,
         followingInProgress: state.stateUsersPage.followingInProgress,
-        isAuth: state.authReducer.isAuth,
     }
 }
 let mapDispatchToProps = {
@@ -60,9 +59,11 @@ let mapDispatchToProps = {
     unfollow,
 }
 
+let AuthRedirectComponent = withAuthRedirect(UsersContainer);
+
 //========================================================================================================================================================
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
 //========================================================================================================================================================
 
