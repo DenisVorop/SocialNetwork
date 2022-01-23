@@ -1,10 +1,13 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import './Profile.scss';
 import UserInfo from './UserInfo/UserInfo';
+import { Navigate } from 'react-router-dom';
 
 //========================================================================================================================================================
 
 let Profile = (props) => {
+    if (!props.isAuth) return <Navigate to='/login' />;
+
     return (
         <div className="body__profile profile-body">
             <div className="profile-body__board">

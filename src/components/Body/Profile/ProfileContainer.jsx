@@ -22,6 +22,7 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.stateProfilePage.profile,
+        isAuth: state.authReducer.isAuth,
     }
 }
 const mapDispatchToProps = {
@@ -32,7 +33,7 @@ const mapDispatchToProps = {
 const ProfileURLMatch = (props) => {
     const params = useParams();
     return (
-        <ProfileContainer {...props} params={params}/>
+        <ProfileContainer {...props} params={params} />
     );
 }
 

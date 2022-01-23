@@ -30,6 +30,7 @@ class UsersContainer extends React.Component {
                 followingInProgress={this.props.followingInProgress}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
+                isAuth={this.props.isAuth}
             />
         </>
     }
@@ -43,6 +44,7 @@ let mapStateToProps = (state) => {
         currentPage: state.stateUsersPage.currentPage,
         isFetching: state.stateUsersPage.isFetching,
         followingInProgress: state.stateUsersPage.followingInProgress,
+        isAuth: state.authReducer.isAuth,
     }
 }
 let mapDispatchToProps = {
