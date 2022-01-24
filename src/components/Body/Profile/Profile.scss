@@ -74,10 +74,12 @@
     &__name {
         font-size: 24px;
         font-weight: 700;
-        margin: 0px 0px 20px 0px;
+        margin: 0px 0px 5px 0px;
     }
 
-    &__job {}
+    &__job {
+        margin: 20px 0px 0px 0px;
+    }
 
     &__inst {}
 

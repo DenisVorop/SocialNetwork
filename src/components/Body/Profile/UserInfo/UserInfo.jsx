@@ -1,4 +1,5 @@
 import Preloader from '../../../common/preloader/Preloader';
+import UserStatus from './UserStatus';
 
 //========================================================================================================================================================
 
@@ -15,6 +16,9 @@ let UserInfo = (props) => {
                 </div>
                 <div className="profile-body__info info-profile-body">
                     <div className="info-profile-body__name">{props.profile.fullName ? props.profile.fullName : 'ФулНэйм'}</div>
+                    <div>
+                        <UserStatus status={'Hello! It\s status!'}/>
+                    </div>
                     <div className="info-profile-body__job">{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : 'Job search not specified'}</div>
                     <div className="info-profile-body__inst">{props.profile.contacts.instagram ? props.profile.contacts.instagram : 'Instagram not specified'}</div>
                     <div className="info-profile-body__vk">{props.profile.contacts.vk ? props.profile.contacts.vk : 'VK not specified'}</div>
