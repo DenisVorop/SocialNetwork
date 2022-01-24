@@ -90,8 +90,8 @@ export const setUser = (userId) => {
 }
 export const getStatus = (userId) => {
     return (dispatch) => {
-        profileAPI.getStatus(userId).then(({ data }) => {
-            dispatch(setStatus(data));
+        profileAPI.getStatus(userId).then(response => {
+            dispatch(setStatus(response.data));
         });
     }
 }
