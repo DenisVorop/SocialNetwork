@@ -3,6 +3,9 @@ import Message from './Message/Message'
 import './Messages.scss'
 import ui from '../../../scss/ui.module.scss';
 
+import { Formik } from 'formik';
+// import * as yup from 'yup';
+
 //========================================================================================================================================================
 
 const Messages = (props) => {
@@ -13,14 +16,14 @@ const Messages = (props) => {
     let messagesElements =
         props.stateMessagesPage.messageData.map(message => <Message textMessage={message.message} key={message.id} />)
 
-    let onAddMessage = () => {
-        props.addMessage();
-    }
+    // const validationLogin = yup.object().shape({
+    //     login: yup.string().typeError('string expected!').required('Obligatory field!'),
+    //     password: yup.string().typeError('string expected!').required('Obligatory field!'),
+    //     confirmPassword: yup.string().oneOf([yup.ref('password')], ('Password mismatch!')).required('Obligatory field!')
+    // })
 
-    let onMessageChange = (e) => {
-        let newMessageElement = e.target.value;
-        let text = newMessageElement;
-        props.updateNewMessageText(text);
+    let addNewMessage = (values) => {
+        props.addMessage(values.newMessageText)
     }
 
     return (
@@ -33,18 +36,40 @@ const Messages = (props) => {
                     <div className="messages-body__messages">
                         {messagesElements}
                     </div>
-                    <div className="messages-body__form">
-                        <div>
-                            <textarea placeholder='Write smth here and tap to btn'
-                                className={ui._area}
-                                onChange={onMessageChange}
-                                value={props.stateMessagesPage.newMessageText}
-                            />
-                        </div>
-                        <div>
-                            <button className={ui._btn} onClick={onAddMessage}>add message</button>
-                        </div>
-                    </div>
+                    <form>
+                        <Formik
+                            initialValues={{
+                                newMessageText: '',
+                            }}
+                            // validateOnBlur
+                            onSubmit={(values) => { addNewMessage(values)}}
+                        // validationSchema={validationLogin}
+                        >
+                            {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
+                                <div className="messages-body__form">
+                                    <div>
+                                        <textarea placeholder='Write smth here and tap to btn'
+                                            className={ui._area}
+                                            type="text"
+                                            name='newMessageText'
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.newMessageText}
+                                        />
+                                    </div>
+                                    {/* {touched.newMessageText && errors.newMessageText && <p className='error'>{errors.newMessageText}</p>} */}
+                                    <div>
+                                        <button
+                                            className={ui._btn}
+                                            disabled={!isValid && !dirty}
+                                            onClick={handleSubmit}
+                                            type='submit'
+                                        >add message</button>
+                                    </div>
+                                </div>
+                            )}
+                        </Formik>
+                    </form>
                 </div>
             </div>
         </div>

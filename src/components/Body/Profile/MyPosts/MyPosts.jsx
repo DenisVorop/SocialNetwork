@@ -1,20 +1,24 @@
 import Post from "./Post/Post";
 import ui from '../../../../scss/ui.module.scss';
 
+import { Formik } from 'formik';
+// import * as yup from 'yup';
+
 //========================================================================================================================================================
 
 let MyPosts = (props) => {
     let postElements = props.posts.map(post => <Post message={post.message} key={post.id} />)
 
-    let onAddPost = () => {
-        props.addPost();
+    let addNewPost = (values) => {
+        props.addPost(values.newPostText)
+        console.log(values.newPostText)
     }
 
-    let onPostChange = (e) => {
-        let newPostElement = e.target.value;
-        let text = newPostElement; // Получаем значение элемента
-        props.updateNewPostText(text); // Вызываем функцию postChange со значением, которое пришло в text при изменении в textarea
-    }
+    // const validationLogin = yup.object().shape({
+    //     login: yup.string().typeError('string expected!').required('Obligatory field!'),
+    //     password: yup.string().typeError('string expected!').required('Obligatory field!'),
+    //     confirmPassword: yup.string().oneOf([yup.ref('password')], ('Password mismatch!')).required('Obligatory field!')
+    // })
 
     return (
         <div className="profile-body__posts">
@@ -22,16 +26,40 @@ let MyPosts = (props) => {
                 <div className="profile-body__my">My posts</div>
                 <div className="profile-body__myPosts">
                     <div className="profile-body__form">
-                        <div>
-                            <textarea placeholder="Write smth here and tap to btn"
-                                className={ui._area}
-                                onChange={onPostChange}
-                                value={props.newPostText}
-                            />
-                        </div>
-                        <div>
-                            <button className={ui._btn} onClick={onAddPost}>add post</button>
-                        </div>
+                        <form>
+                            <Formik
+                                initialValues={{
+                                    newPostText: '',
+                                }}
+                                // validateOnBlur
+                                onSubmit={(values) => { addNewPost(values) }}
+                            // validationSchema={validationLogin}
+                            >
+                                {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
+                                    <div className="messages-body__form">
+                                        <div>
+                                            <textarea placeholder='Write smth here and tap to btn'
+                                                className={ui._area}
+                                                type="text"
+                                                name='newPostText'
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.newPostText}
+                                            />
+                                        </div>
+                                        {/* {touched.newPostText && errors.newPostText && <p className='error'>{errors.newPostText}</p>} */}
+                                        <div>
+                                            <button
+                                                className={ui._btn}
+                                                disabled={!isValid && !dirty}
+                                                onClick={handleSubmit}
+                                                type='submit'
+                                            >add post</button>
+                                        </div>
+                                    </div>
+                                )}
+                            </Formik>
+                        </form>
                     </div>
                     {postElements}
                 </div>
