@@ -2,7 +2,7 @@ import Post from "./Post/Post";
 import ui from '../../../../scss/ui.module.scss';
 
 import { Formik } from 'formik';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 
 //========================================================================================================================================================
 
@@ -14,11 +14,9 @@ let MyPosts = (props) => {
         console.log(values.newPostText)
     }
 
-    // const validationLogin = yup.object().shape({
-    //     login: yup.string().typeError('string expected!').required('Obligatory field!'),
-    //     password: yup.string().typeError('string expected!').required('Obligatory field!'),
-    //     confirmPassword: yup.string().oneOf([yup.ref('password')], ('Password mismatch!')).required('Obligatory field!')
-    // })
+    const validationPosts = yup.object().shape({
+        newPostText: yup.string().typeError('string expected!').required('Obligatory field!'),
+    })
 
     return (
         <div className="profile-body__posts">
@@ -31,9 +29,9 @@ let MyPosts = (props) => {
                                 initialValues={{
                                     newPostText: '',
                                 }}
-                                // validateOnBlur
+                                validateOnBlur
                                 onSubmit={(values) => { addNewPost(values) }}
-                            // validationSchema={validationLogin}
+                                validationSchema={validationPosts}
                             >
                                 {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
                                     <div className="messages-body__form">
@@ -47,7 +45,7 @@ let MyPosts = (props) => {
                                                 value={values.newPostText}
                                             />
                                         </div>
-                                        {/* {touched.newPostText && errors.newPostText && <p className='error'>{errors.newPostText}</p>} */}
+                                        {touched.newPostText && errors.newPostText && <p className='error'>{errors.newPostText}</p>}
                                         <div>
                                             <button
                                                 className={ui._btn}

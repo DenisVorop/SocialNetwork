@@ -4,7 +4,7 @@ import './Messages.scss'
 import ui from '../../../scss/ui.module.scss';
 
 import { Formik } from 'formik';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 
 //========================================================================================================================================================
 
@@ -16,11 +16,9 @@ const Messages = (props) => {
     let messagesElements =
         props.stateMessagesPage.messageData.map(message => <Message textMessage={message.message} key={message.id} />)
 
-    // const validationLogin = yup.object().shape({
-    //     login: yup.string().typeError('string expected!').required('Obligatory field!'),
-    //     password: yup.string().typeError('string expected!').required('Obligatory field!'),
-    //     confirmPassword: yup.string().oneOf([yup.ref('password')], ('Password mismatch!')).required('Obligatory field!')
-    // })
+    const validationMessages = yup.object().shape({
+        newMessageText: yup.string().typeError('string expected!').required('Obligatory field!'),
+        })
 
     let addNewMessage = (values) => {
         props.addMessage(values.newMessageText)
@@ -41,9 +39,9 @@ const Messages = (props) => {
                             initialValues={{
                                 newMessageText: '',
                             }}
-                            // validateOnBlur
-                            onSubmit={(values) => { addNewMessage(values)}}
-                        // validationSchema={validationLogin}
+                            validateOnBlur
+                            onSubmit={(values) => { addNewMessage(values) }}
+                            validationSchema={validationMessages}
                         >
                             {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
                                 <div className="messages-body__form">
@@ -57,7 +55,7 @@ const Messages = (props) => {
                                             value={values.newMessageText}
                                         />
                                     </div>
-                                    {/* {touched.newMessageText && errors.newMessageText && <p className='error'>{errors.newMessageText}</p>} */}
+                                    {touched.newMessageText && errors.newMessageText && <p className='error'>{errors.newMessageText}</p>}
                                     <div>
                                         <button
                                             className={ui._btn}
