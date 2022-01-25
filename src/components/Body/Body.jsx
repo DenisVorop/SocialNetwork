@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import MessagesContainer from './Messages/MessagesContainer';
 import UsersContainer from './Users/UsersContainer';
 import ProfileContainer from './Profile/ProfileContainer';
+import Login from './Login/Login';
 
 //========================================================================================================================================================
 
@@ -17,6 +18,8 @@ const Body = () => {
                 <div className="body__row">
                     <Navigation />
                     <Routes>
+                        <Route path='/login'
+                            element={<Login />} />
                         <Route path='/profile/:userId'
                             element={<ProfileContainer />} />
                         <Route path='/messages/*'

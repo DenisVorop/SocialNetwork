@@ -5,6 +5,8 @@ import messagesReducer from "./messagesReducer";
 import profileReducer from "./profileReducer";
 import usersReducer from "./usersReducer";
 
+//========================================================================================================================================================
+
 let reducers = combineReducers(
     {
         stateProfilePage: profileReducer,
@@ -15,5 +17,7 @@ let reducers = combineReducers(
 );
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+
+//========================================================================================================================================================
 
 export default store;
