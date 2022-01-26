@@ -4,7 +4,8 @@ import * as yup from 'yup';
 
 //========================================================================================================================================================
 
-const FormLogin = () => {
+const FormLogin = (props) => {
+
     const validationLogin = yup.object().shape({
         login: yup.string().typeError('string expected!').required('Obligatory field!'),
         password: yup.string().typeError('string expected!').required('Obligatory field!'),
@@ -20,7 +21,7 @@ const FormLogin = () => {
                     confirmPassword: '',
                 }}
                 validateOnBlur
-                onSubmit={(values) => { console.log(values) }}
+                onSubmit={(values) => { props.getValues(values) }}
                 validationSchema={validationLogin}
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (

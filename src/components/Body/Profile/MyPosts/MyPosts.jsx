@@ -15,7 +15,7 @@ let MyPosts = (props) => {
     }
 
     const validationPosts = yup.object().shape({
-        newPostText: yup.string().typeError('string expected!').required('Obligatory field!'),
+        newPostText: yup.string().max(30, 'Error! Exceeded allowed number of characters!').typeError('string expected!').required('Obligatory field!'),
     })
 
     return (

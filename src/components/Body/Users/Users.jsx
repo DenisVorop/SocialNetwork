@@ -18,10 +18,9 @@ const Users = (props) => {
 
     return <>
         <div className="body__page">
-            {props.isFetching ? <Preloader /> : null}
             <div className='body__users users-body'>
                 <div className='users-body__cards'>
-                    {
+                    {props.isFetching ? <Preloader /> :
                         props.usersData.map(user =>
                             <div key={user.id}>
                                 <div className="users-body__card card-users-body">

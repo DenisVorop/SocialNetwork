@@ -17,7 +17,7 @@ let UserInfo = (props) => {
                 <div className="profile-body__info info-profile-body">
                     <div className="info-profile-body__name">{props.profile.fullName ? props.profile.fullName : 'ФулНэйм'}</div>
                     <div>
-                        <UserStatus status={props.status} updateStatus={props.updateStatus}/>
+                        <UserStatus status={props.status} updateStatus={props.updateStatus} />
                     </div>
                     <div className="info-profile-body__job">{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : 'Job search not specified'}</div>
                     <div className="info-profile-body__inst">{props.profile.contacts.instagram ? props.profile.contacts.instagram : 'Instagram not specified'}</div>

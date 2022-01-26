@@ -17,13 +17,14 @@
     &__auth {
         display: flex;
         align-items: center;
-        cursor: pointer;
-        background-color: #fff;
+        // cursor: pointer;
+        // background-color: #fff;
+        color: #ffffff;
         padding: 0 5px;
         margin: 5px 0;
-        &:hover {
-            background-color: rgb(223, 223, 223);
-        }
+        // &:hover {
+        //     background-color: rgb(223, 223, 223);
+        // }
     }
 
     &__image img {

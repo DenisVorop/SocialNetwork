@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
+import ui from '../../scss/ui.module.scss';
 
 //========================================================================================================================================================
 
@@ -12,7 +13,11 @@ const Header = (props) => {
                     <div className="header__name">DenisVorop</div>
                 </div>
                 <div className="header__auth">
-                    {props.isAuth ? props.login : <NavLink to='/login'>Login</NavLink>}
+                    {props.isAuth
+                        ? <div>
+                            {props.login} - <button className={ui._btn} onClick={props.logout}>Log Out</button>
+                        </div>
+                        : <NavLink to='/login'>Login</NavLink>}
                 </div>
             </div>
         </header>
