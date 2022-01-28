@@ -9,8 +9,8 @@ import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        // let userId = this.props.params ? this.props.params.userId : '21768'; // @icloud
-        let userId = this.props.params ? this.props.params.userId : '21985'; // @mail
+        // let userId = this.props.params ? this.props.params.userId : this.props.userId; // @icloud
+        let userId = this.props.params ? this.props.params.userId : this.props.userId; // @mail
         this.props.setUser(userId);
         this.props.getStatus(userId);
     }
@@ -26,6 +26,8 @@ const mapStateToProps = (state) => {
     return {
         profile: state.stateProfilePage.profile,
         status: state.stateProfilePage.status,
+        userId: state.authReducer.userId,
+        isAuth: state.authReducer.isAuth,
     }
 }
 const mapDispatchToProps = {
