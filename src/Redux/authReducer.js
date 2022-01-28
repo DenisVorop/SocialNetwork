@@ -49,11 +49,13 @@ export const getAuth = () => {
         });
     }
 }
-export const login = (email, password) => {
+export const login = (email, password, setStatus) => {
     return (dispatch) => {
         authAPI.login(email, password).then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuth());
+            } else {
+                setStatus([response.data.messages]);
             }
         });
     }

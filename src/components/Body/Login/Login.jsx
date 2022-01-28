@@ -7,8 +7,8 @@ import './Login.scss';
 //========================================================================================================================================================
 
 const Login = (props) => {
-    let getValues = (values) => {
-        props.login(values.login, values.password)
+    let getValues = (values, setStatus) => {
+        props.login(values.login, values.password, setStatus);
     }
 
     if (props.isAuth) {
