@@ -1,18 +1,24 @@
 .navigation-body {
-    margin: 0px 15px 0px 0px;
+    margin: 0px 0px 15px 0px;
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
     border-radius: 15px;
 
     &__list {
-        text-align: center;
-        padding: 20px 20px 0px 20px;
+        // text-align: center;
+        // padding: 20px 20px 0px 20px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        a:not(:last-child) {
+            margin: 0px 10px 0px 0px;
+        }
     }
 
     &__link {
         background: #fff;
         box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        margin: 0px 0px 10px 0px;
+        // margin: 0px 0px 10px 0px;
         padding: 5px;
         // font-size: 18px;
 

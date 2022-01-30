@@ -12,7 +12,6 @@ let MyPosts = React.memo((props) => {
 
     let addNewPost = (values) => {
         props.addPost(values.newPostText)
-        console.log(values.newPostText)
     }
 
     const validationPosts = yup.object().shape({

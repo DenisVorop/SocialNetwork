@@ -27,6 +27,14 @@
         // }
     }
 
+    &__log {
+        display: flex;
+        align-items: center;
+        >:not(:last-child) {
+            margin: 0px 10px 0px 0px;
+        }
+    }
+
     &__image img {
         width: 45px;
         height: 45px;

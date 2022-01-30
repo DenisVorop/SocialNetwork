@@ -3,27 +3,28 @@
 // .
 // .
 //========================================================================================================================================================
+
 ._btn {
-    padding: 10px 20px;
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: center;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    font-size: 16px;
-    color: #000;
-
-    // font-size: 20px;
-    // margin: 0px 0px 40px 0px;
-    &:hover {
-        background-color: rgb(223, 223, 223);
-    }
-
-    &:disabled {
-        // border: 1px solid blue;
-    }
+    padding: 5px 10px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 40px #000 inset, 0 0 0 0 #000;
+    font-family: 'Forum';
+    // font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: .15s ease-in-out;
 }
+
+._btn:hover {
+    box-shadow: 0 0 10px 0 #000 inset, 0 0 10px 4px #000;
+    color: #000;
+}
+
+//========================================================================================================================================================
 
 ._area {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -83,11 +84,13 @@
         display: flex;
         align-items: center;
         font-size: 16px;
+
         &:hover {
             background-color: rgb(240, 240, 240);
         }
     }
 }
+
 //========================================================================================================================================================
 .error {
     color: tomato;

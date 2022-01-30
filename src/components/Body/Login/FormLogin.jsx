@@ -85,7 +85,7 @@ const FormLogin = (props) => {
                                     disabled={!isValid && !dirty}
                                     onClick={handleSubmit}
                                     type='submit'
-                                >Submit</button>
+                                >Login</button>
                             </div>
                         </div>
                     </Form>
