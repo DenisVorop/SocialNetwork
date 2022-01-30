@@ -6,20 +6,21 @@ import React from 'react';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { NavLink } from 'react-router-dom';
 
 //========================================================================================================================================================
 
 const Messages = (props) => {
-
+    // { diaData => diaData.isActive ? ui.dialog_active : ui.dialog }
     let dialogsElements =
-        props.stateMessagesPage.dialogData.map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />)
+        props.stateMessagesPage.dialogData.map(dialog => <NavLink to='' className={diaData => diaData.isActive ? ui.dialog_active : ui.dialog}><Dialog name={dialog.name} id={dialog.id} key={dialog.id} /></NavLink>)
 
     let messagesElements =
         props.stateMessagesPage.messageData.map(message => <Message textMessage={message.message} key={message.id} />)
 
     const validationMessages = yup.object().shape({
         newMessageText: yup.string().typeError('string expected!').required('Obligatory field!'),
-        })
+    })
 
     let addNewMessage = (values) => {
         props.addMessage(values.newMessageText)

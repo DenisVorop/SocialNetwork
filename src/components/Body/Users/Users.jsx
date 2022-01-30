@@ -1,5 +1,5 @@
 import ui from '../../../scss/ui.module.scss';
-import userPhoto from '../../../assets/images/user.png';
+import userPhoto from '../../../assets/images/user.svg';
 import Preloader from '../../common/preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
@@ -23,34 +23,27 @@ const Users = (props) => {
                 <div className='users-body__cards'>
                     {props.isFetching ? <Preloader /> :
                         props.usersData.map(user =>
-                            <div key={user.id}>
-                                <div className="users-body__card card-users-body">
-                                    <div className="card-users-body__header">
-                                        <NavLink to={'/profile/' + user.id}>
-                                            <div className="card-users-body__image">
-                                                <img src={user.photos.small != null ? user.photos.small : userPhoto} />
-                                            </div>
-                                        </NavLink>
-                                        <div className="card-users-body__name">
-                                            {user.name}
+                            <div key={user.id} className="users-body__card card-users-body">
+                                <div class="border">
+                                    <div class="wrap">
+                                        <div class="product-wrap">
+                                            <img src={user.photos.small != null ? user.photos.small : userPhoto} />
+                                        </div>
+                                        <div class="loop-action">
+                                            <NavLink to={'/profile/' + user.id} class="add-to-cart">Go to user</NavLink>
+                                            {user.followed
+                                                ? <button disabled={props.followingInProgress.some(id => id === user.id)}
+                                                    onClick={() => { props.unfollow(user.id); }} className={ui.follow}>
+                                                    <NavLink to={''} className="loop-add-to-cart">unFollow</NavLink>
+                                                </button>
+                                                : <button disabled={props.followingInProgress.some(id => id === user.id)}
+                                                    onClick={() => { props.follow(user.id); }} className={ui.follow}>
+                                                    <NavLink to={''} className="loop-add-to-cart">follow</NavLink>
+                                                </button>}
                                         </div>
                                     </div>
-                                    <div className="card-users-body__info">
-                                        <div className="card-users-body__location">
-                                            <div className="card-users-body__country">
-                                                {/* {user.location.country} */}
-                                            </div>
-                                            <div className="card-users-body__city">
-                                                {/* {user.location.city} */}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card-users-body__button">
-                                        {user.followed
-                                            ? <button disabled={props.followingInProgress.some(id => id === user.id)}
-                                                onClick={() => { props.unfollow(user.id); }} className={ui._btn}>unFollow</button>
-                                            : <button disabled={props.followingInProgress.some(id => id === user.id)}
-                                                onClick={() => { props.follow(user.id); }} className={ui._btn}>Follow</button>}
+                                    <div class="product-info">
+                                        <h3 class="product-title">{user.name}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +60,7 @@ const Users = (props) => {
                     })}
                 </div>
             </div>
-        </div>
+        </div >
     </>
 }
 

@@ -2,9 +2,9 @@ import { profileAPI } from "../api/api";
 
 //==============CONSTS==========================================================================================================================================
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS';
+const ADD_POST = 'profileReducer/ADD_POST';
+const SET_USER_PROFILE = 'profileReducer/SET_USER_PROFILE';
+const SET_STATUS = 'profileReducer/SET_STATUS';
 
 //========================================================================================================================================================
 
@@ -77,19 +77,17 @@ export const setUser = (userId) => {
     }
 }
 export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId).then(response => {
-            dispatch(setStatus(response.data));
-        });
+    return async (dispatch) => {
+        const response = await profileAPI.getStatus(userId)
+        dispatch(setStatus(response.data));
     }
 }
 export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status).then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        });
+    return async (dispatch) => {
+        const response = await profileAPI.updateStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
 }
 

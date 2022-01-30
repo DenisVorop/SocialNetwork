@@ -5,23 +5,26 @@
 //========================================================================================================================================================
 
 ._btn {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+    text-decoration: none;
+    display: block;
+    border: 1px solid #fff;
+    white-space: nowrap;
+    text-transform: uppercase;
     padding: 5px 10px;
-    margin: 10px 0px;
-    border-radius: 10px;
-    box-shadow: 0 0 40px 40px #000 inset, 0 0 0 0 #000;
-    font-family: 'Forum';
-    // font-weight: bold;
-    letter-spacing: 2px;
-    color: white;
-    transition: .15s ease-in-out;
-}
+    font-size: 14px;
+    line-height: 1.6;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+    margin: 0px 0px 0px 0px;
+    transition: .3s ease-in-out;
 
-._btn:hover {
-    box-shadow: 0 0 10px 0 #000 inset, 0 0 10px 4px #000;
-    color: #000;
+    &:hover {
+        box-shadow: 0 0 5px 0 #000 inset, 0 0 20px 1px #fff;
+        color: #fff;
+    }
 }
 
 //========================================================================================================================================================
@@ -31,6 +34,9 @@
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
+    width: 100%;
+    background-color: #4b4b4e;
+    color: #fff;
 
     &:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -42,13 +48,12 @@
 
 .nav_active {
     li {
-        background-color: rgb(223, 223, 223);
+        background-color: #000;
     }
 
     &:hover {
         li {
-            background-color: rgb(223, 223, 223);
-            // color: rgb(223, 223, 223);
+            background-color: #000;
         }
     }
 }
@@ -57,8 +62,7 @@
 .dialog {}
 
 .dialog_active {
-    font-size: 48px;
-    color: gold;
+    background-color: #000;
 }
 
 //========================================================================================================================================================
@@ -95,4 +99,9 @@
 .error {
     color: tomato;
     padding: 0px 0px 10px 0px;
+}
+
+//========================================================================================================================================================
+.follow {
+    width: 100%;
 }

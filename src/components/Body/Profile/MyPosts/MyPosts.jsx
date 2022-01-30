@@ -34,7 +34,7 @@ let MyPosts = React.memo((props) => {
                                 validationSchema={validationPosts}
                             >
                                 {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
-                                    <div className="messages-body__form">
+                                    <div className="profile-body__form">
                                         <div>
                                             <textarea placeholder='Write smth here and tap to btn'
                                                 className={ui._area}

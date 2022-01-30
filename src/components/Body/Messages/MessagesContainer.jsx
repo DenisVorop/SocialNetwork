@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../Redux/messagesReducer';
+import { addMessageActionCreator } from '../../../Redux/messagesReducer';
 import Messages from './Messages';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import React from 'react';
 
 //========================================================================================================================================================
 

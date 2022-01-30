@@ -2,7 +2,7 @@ import { getAuth } from "./authReducer";
 
 //========================================================================================================================================================
 
-const INITIALIZED_SUCCESS = 'SET-INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'appReducer/INITIALIZED_SUCCESS';
 
 //========================================================================================================================================================
 
@@ -33,11 +33,9 @@ export const initializedSuccess = () => {
 //================THUNK CREATORS========================================================================================================================================
 
 export const initializedApp = () => {
-    return (dispatch) => {
-        let promise = dispatch(getAuth());
-        promise.then(() => {
-            dispatch(initializedSuccess());
-        })
+    return async (dispatch) => {
+        await dispatch(getAuth());
+        dispatch(initializedSuccess());
     }
 }
 

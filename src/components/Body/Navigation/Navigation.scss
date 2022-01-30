@@ -1,12 +1,10 @@
 .navigation-body {
     margin: 0px 0px 15px 0px;
-    background: #fff;
+    background: #938f8f;
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    border-radius: 15px;
+    border-radius: 5px;
 
     &__list {
-        // text-align: center;
-        // padding: 20px 20px 0px 20px;
         display: flex;
         align-items: center;
         padding: 10px;
@@ -16,14 +14,12 @@
     }
 
     &__link {
-        background: #fff;
+        background: #4b4b4e;
         box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        // margin: 0px 0px 10px 0px;
         padding: 5px;
-        // font-size: 18px;
 
         &:hover {
-            background-color: rgb(223, 223, 223);
+            background-color: #000;
         }
     }
 }
