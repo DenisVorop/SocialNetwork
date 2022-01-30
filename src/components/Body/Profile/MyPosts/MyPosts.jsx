@@ -1,12 +1,13 @@
 import Post from "./Post/Post";
 import ui from '../../../../scss/ui.module.scss';
+import React from 'react';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
 //========================================================================================================================================================
 
-let MyPosts = (props) => {
+let MyPosts = React.memo((props) => {
     let postElements = props.posts.map(post => <Post message={post.message} key={post.id} />)
 
     let addNewPost = (values) => {
@@ -64,7 +65,7 @@ let MyPosts = (props) => {
             </div>
         </div>
     );
-}
+})
 
 //========================================================================================================================================================
 

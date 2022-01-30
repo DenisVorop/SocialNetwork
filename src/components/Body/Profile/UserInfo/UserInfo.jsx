@@ -1,3 +1,4 @@
+import React from 'react';
 import Preloader from '../../../common/preloader/Preloader';
 import UserStatus from './UserStatus';
 

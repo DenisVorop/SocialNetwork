@@ -1,6 +1,7 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import './Profile.scss';
 import UserInfo from './UserInfo/UserInfo';
+import React from 'react';
 
 //========================================================================================================================================================
 

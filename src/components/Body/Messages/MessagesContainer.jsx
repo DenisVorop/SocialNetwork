@@ -3,6 +3,7 @@ import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../.
 import Messages from './Messages';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import React from 'react';
 
 //========================================================================================================================================================
 

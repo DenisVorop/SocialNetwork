@@ -2,6 +2,7 @@ import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 import './Messages.scss'
 import ui from '../../../scss/ui.module.scss';
+import React from 'react';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
