@@ -11,7 +11,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import React from 'react';
 import { connect } from 'react-redux';
 import { initializedApp } from './Redux/appReducer';
-import Preloader from './components/common/preloader/Preloader';
+import Preloader from './components/common/Preloader/Preloader';
 
 //========================================================================================================================================================
 

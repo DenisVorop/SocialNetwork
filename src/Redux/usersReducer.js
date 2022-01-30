@@ -13,9 +13,9 @@ const TOOGLE_IS_FOLOWING_PROGRESS = 'userReducer/TOOGLE_IS_FOLOWING_PROGRESS';
 let initialState = {
     usersData: [],
     pageSize: 8,
-    totalUsersCount: 80,
+    totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false,
+    isFetching: true,
     followingInProgress: [],
 }
 
@@ -105,10 +105,10 @@ export const setCurrentPage = (currentPage) => {
         currentPage: currentPage,
     })
 }
-export const setTotalUsersCount = (totalUsersCount) => {
+export const setTotalUsersCount = (totalCount) => {
     return ({
         type: SET_TOTAL_USERS_COUNT,
-        count: totalUsersCount,
+        count: totalCount,
     })
 }
 export const toggleIsFetching = (isFetching) => {
@@ -128,13 +128,14 @@ export const toggleFolowingProgress = (isFetching, userId) => {
 //================THUNK CREATORS========================================================================================================================================
 
 export const getUsers = (currentPage, pageSize) => {
-    return async (dispatch) => {
+    return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        dispatch(setCurrentPage(currentPage));
-
-        const data = await usersAPI.getUsers(currentPage, pageSize)
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.items));
+        dispatch(setCurrentPage(currentPage));
+        dispatch(setTotalUsersCount(data.totalCount));
+        })
     }
 }
 export const follow = (userId) => {
