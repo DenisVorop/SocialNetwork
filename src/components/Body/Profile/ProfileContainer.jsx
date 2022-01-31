@@ -8,11 +8,21 @@ import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 //========================================================================================================================================================
 class ProfileContainer extends React.Component {
 
-    componentDidMount() {
+    profileRefresh() {
         // let userId = this.props.params ? this.props.params.userId : this.props.userId; // @icloud
         let userId = this.props.params ? this.props.params.userId : this.props.userId; // @mail
         this.props.setUser(userId);
         this.props.getStatus(userId);
+    }
+
+    componentDidMount() {
+        this.profileRefresh();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.params.userId != prevProps.params.userId) {
+            this.profileRefresh();
+        }
     }
 
     render() {

@@ -76,10 +76,12 @@
     cursor: pointer;
     width: 35px;
     height: 35px;
+
     &:hover {
         background-color: #000;
     }
 }
+
 .selected {
     font-weight: bold;
     color: gold;
@@ -98,6 +100,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 100%;
 }
 
 //========================================================================================================================================================
