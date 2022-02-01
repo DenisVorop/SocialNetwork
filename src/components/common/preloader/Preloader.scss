@@ -8,7 +8,7 @@
     }
 }
 
-.spinner-box {
+.spinner__box {
     width: 200px;
     height: 200px;
     display: flex;
@@ -25,28 +25,28 @@
     border-radius: 50%;
 }
 
-.blue-orbit {
+.blue__orbit {
     width: 165px;
     height: 165px;
     border: 1px solid #91daffa5;
     -webkit-animation: spin3D 3s linear .2s infinite;
 }
 
-.green-orbit {
+.green__orbit {
     width: 120px;
     height: 120px;
     border: 1px solid #91ffbfa5;
     -webkit-animation: spin3D 2s linear 0s infinite;
 }
 
-.red-orbit {
+.red__orbit {
     width: 90px;
     height: 90px;
     border: 1px solid #ffca91a5;
     -webkit-animation: spin3D 1s linear 0s infinite;
 }
 
-.white-orbit {
+.white__orbit {
     width: 60px;
     height: 60px;
     border: 2px solid #ffffff;

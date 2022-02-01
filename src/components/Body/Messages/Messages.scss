@@ -2,9 +2,9 @@
 
 .messages-body {
     min-height: 500px;
-    background: #938f8f;
+    background: #616161;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
+    border-radius: 25px;
     padding: 25px 15px;
 
     &__row {
@@ -18,7 +18,7 @@
         border-right: 3px solid rgb(223, 223, 223);
     }
 
-    &__image img{
+    &__image img {
         max-width: 30px;
         margin: 0px 10px 0px 0px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -28,6 +28,7 @@
     &__user {
         background-color: #4b4b4e;
         border-radius: 5px;
+
         &:hover {
             background-color: #000;
         }
@@ -58,16 +59,21 @@
     &__message {
         display: flex;
         align-items: center;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-        border-radius: 5px;
+        border-radius: 15px;
         margin: 0px 0px 10px 0px;
         padding: 10px;
         width: 350px;
-        background-color: #4b4b4e;
+        background-color: #D9D9D9;
+        border: 2px solid #B5E48C;
+        color: #000;
     }
 
     &__form {
         padding: 10px;
         border-top: 1px solid #dfdfdf;
+
+        textarea {
+            background-color: #FFFFFF;
+        }
     }
 }

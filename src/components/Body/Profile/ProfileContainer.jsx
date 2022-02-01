@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from "react-redux"
-import { getStatus, setUser, setUserProfile, updateStatus } from '../../../Redux/profileReducer';
+import { getStatus, setUser, setUserProfile, updateStatus, savePhoto } from '../../../Redux/profileReducer';
 import { useParams } from 'react-router-dom';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
@@ -9,8 +9,7 @@ import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 class ProfileContainer extends React.Component {
 
     profileRefresh() {
-        // let userId = this.props.params ? this.props.params.userId : this.props.userId; // @icloud
-        let userId = this.props.params ? this.props.params.userId : this.props.userId; // @mail
+        let userId = this.props.params.userId ? this.props.params.userId : this.props.authorizedUserId; // @mail
         this.props.setUser(userId);
         this.props.getStatus(userId);
     }
@@ -20,14 +19,20 @@ class ProfileContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.params.userId != prevProps.params.userId) {
+        if (this.props.params != prevProps.params) {
             this.profileRefresh();
         }
     }
 
     render() {
         return <>
-            <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />
+            <Profile {...this.props}
+                profile={this.props.profile}
+                status={this.props.status}
+                updateStatus={this.props.updateStatus}
+                isOwner={!this.props.params.userId}
+                savePhoto={this.props.savePhoto}
+            />
         </>
     }
 }
@@ -36,7 +41,7 @@ const mapStateToProps = (state) => {
     return {
         profile: state.stateProfilePage.profile,
         status: state.stateProfilePage.status,
-        userId: state.authReducer.userId,
+        authorizedUserId: state.authReducer.userId,
         isAuth: state.authReducer.isAuth,
     }
 }
@@ -45,6 +50,7 @@ const mapDispatchToProps = {
     setUser,
     getStatus,
     updateStatus,
+    savePhoto,
 }
 
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer);

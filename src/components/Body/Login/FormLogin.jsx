@@ -6,8 +6,6 @@ import React from 'react';
 //========================================================================================================================================================
 
 const FormLogin = (props) => {
-    console.log(props)
-
     const validationLogin = yup.object().shape({
         login: yup.string().typeError('string expected!').required('Obligatory field!'),
         password: yup.string().typeError('string expected!').required('Obligatory field!'),

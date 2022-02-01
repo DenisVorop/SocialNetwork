@@ -1,5 +1,6 @@
 import Post from "./Post/Post";
 import ui from '../../../../scss/ui.module.scss';
+import arrow from '../../../../assets/images/arrrow.svg'
 import React from 'react';
 
 import { Formik } from 'formik';
@@ -8,7 +9,11 @@ import * as yup from 'yup';
 //========================================================================================================================================================
 
 let MyPosts = React.memo((props) => {
-    let postElements = props.posts.map(post => <Post message={post.message} key={post.id} />)
+    let postElements = props.posts
+        .map(post =>
+            <div className="profile-body__wrapper-post">
+                <Post message={post.message} key={post.id} />
+            </div>)
 
     let addNewPost = (values) => {
         props.addPost(values.newPostText)
@@ -34,26 +39,29 @@ let MyPosts = React.memo((props) => {
                                 validationSchema={validationPosts}
                             >
                                 {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
-                                    <div className="profile-body__form">
-                                        <div>
-                                            <textarea placeholder='Write smth here and tap to btn'
-                                                className={ui._area}
-                                                type="text"
-                                                name='newPostText'
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                value={values.newPostText}
-                                            />
+                                    <div>
+                                        <div className="profile-body__form">
+                                            <div>
+                                                <textarea placeholder='Write smth here and tap to btn'
+                                                    className={ui._area}
+                                                    type="text"
+                                                    name='newPostText'
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.newPostText}
+                                                />
+                                            </div>
+                                            <div className="profile-body__addpost">
+                                                <button
+                                                    disabled={!isValid && !dirty}
+                                                    onClick={handleSubmit}
+                                                    type='submit'
+                                                >
+                                                    <img src={arrow} alt="" />
+                                                </button>
+                                            </div>
                                         </div>
                                         {touched.newPostText && errors.newPostText && <p className='error'>{errors.newPostText}</p>}
-                                        <div>
-                                            <button
-                                                className={ui._btn}
-                                                disabled={!isValid && !dirty}
-                                                onClick={handleSubmit}
-                                                type='submit'
-                                            >add post</button>
-                                        </div>
                                     </div>
                                 )}
                             </Formik>

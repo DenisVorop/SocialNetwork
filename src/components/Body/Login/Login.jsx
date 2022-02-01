@@ -13,7 +13,7 @@ const Login = (props) => {
     }
 
     if (props.isAuth) {
-        return <Navigate to='/profile/21985' />
+        return <Navigate to='/profile' />
     }
 
     return (

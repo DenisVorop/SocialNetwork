@@ -5,14 +5,15 @@ import { profileAPI } from "../api/api";
 const ADD_POST = 'profileReducer/ADD_POST';
 const SET_USER_PROFILE = 'profileReducer/SET_USER_PROFILE';
 const SET_STATUS = 'profileReducer/SET_STATUS';
+const SAVE_PHOTO_SUCCESS ='profileReducer/SAVE_PHOTO_SUCCESS'
 
 //========================================================================================================================================================
 
 let initialState = {
     postData: [
-        { id: 1, message: 'My first post' },
-        { id: 2, message: 'My second post' },
-        { id: 3, message: 'My third post' },
+        { id: 1, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vehicula fringilla odio quis eleifend. Curabitur.' },
+        { id: 2, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mauris diam, porta luctus est id, mollis venenatis augue. Praesent euismod nunc vitae eros commodo, quis euismod enim gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus dolor vel ipsum mattis hendrerit. Aliquam iaculis scelerisque odio vel euismod. Vestibulum pretium mauris ac nisi suscipit.' },
+        { id: 3, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel pretium orci, eget aliquam sem. Praesent quis nibh fringilla, pretium lacus tempor, tincidunt risus. Nam in scelerisque leo. Morbi dolor.' },
     ],
     profile: null,
     status: '',
@@ -42,6 +43,12 @@ const profileReducer = (state = initialState, action) => {
                 status: action.status,
             };
         }
+        case SAVE_PHOTO_SUCCESS: {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos},
+            };
+        }
         default: return state;
     }
 }
@@ -54,10 +61,10 @@ export const addPostActionCreator = (newPostText) => {
         newPostText: newPostText,
     })
 }
-export const setUserProfile = (profile) => {
+export const setUserProfile = (userId) => {
     return ({
         type: SET_USER_PROFILE,
-        profile: profile,
+        profile: userId,
     })
 }
 export const setStatus = (status) => {
@@ -66,14 +73,19 @@ export const setStatus = (status) => {
         status: status,
     })
 }
+export const savePhotoSuccess = (photos) => {
+    return ({
+        type: SAVE_PHOTO_SUCCESS,
+        photos: photos,
+    })
+}
 
 //================THUNK CREATORS========================================================================================================================================
 
 export const setUser = (userId) => {
-    return (dispatch) => {
-        profileAPI.getUser(userId).then(({ data }) => {
-            dispatch(setUserProfile(data));
-        });
+    return async (dispatch) => {
+        const response = await profileAPI.getUser(userId);
+        dispatch(setUserProfile(response.data));
     }
 }
 export const getStatus = (userId) => {
@@ -87,6 +99,14 @@ export const updateStatus = (status) => {
         const response = await profileAPI.updateStatus(status)
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
+        }
+    }
+}
+export const savePhoto = (file) => {
+    return async (dispatch) => {
+        const response = await profileAPI.savePhoto(file)
+        if (response.data.resultCode === 0) {
+            dispatch(savePhotoSuccess(response.data.data.photos));
         }
     }
 }

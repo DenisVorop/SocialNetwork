@@ -1,12 +1,12 @@
 .header {
     margin: 0px 0px 30px 0px;
-    background: -webkit-linear-gradient(top, #808083, #4b4b4e);
-    // border-radius: 30px 30px 0 0;
+    background: #616161;
 
     &__container {
-        padding: 5px 15px 5px 15px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        height: 65px;
     }
 
     &__logo {
@@ -25,6 +25,12 @@
     &__log {
         display: flex;
         align-items: center;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 35px;
+        color: #FFFFFF;
+
         >:not(:last-child) {
             margin: 0px 10px 0px 0px;
         }
@@ -33,13 +39,40 @@
     &__image img {
         width: 45px;
         height: 45px;
-        border-radius: 50%;
+        background: #B5E48C;
+        border-radius: 15px;
     }
 
     &__name {
-        margin: 0px 0px 0px 25px;
-        font-size: 24px;
-        font-weight: 700;
-        color: #fff;
+        margin: 0px 0px 0px 15px;
+        font-family: Jost;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 28px;
+        line-height: 49px;
+
+        color: #FFFFFF;
+    }
+
+    &__person {
+        border-radius: 50%;
+        overflow: hidden;
+        height: 40px;
+        width: 40px;
+        background-color: #B5E48C;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #000;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #91C763;
+        }
+
+        img {
+            width: 50%;
+            margin: 2px 0 0 1px;
+        }
     }
 }
