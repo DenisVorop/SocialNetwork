@@ -12,8 +12,6 @@ const ProfileDataForm = (props) => {
         aboutMe: yup.string().typeError('string expected!').required('Obligatory field!'),
     })
 
-    console.log(props)
-
     return (
         <div className='profile__wpform'>
             <div className='profile__form'>

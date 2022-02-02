@@ -172,6 +172,7 @@
         color: #000;
         position: absolute;
         margin: 0px 0px 0px 20px;
+        z-index: 222;
     }
 }
 
@@ -190,6 +191,7 @@
         margin: -22.5px 0px 0px 20px;
         max-height: 440px;
         overflow-x: scroll;
+        z-index: 222;
 }
 
 .info-profile-body {

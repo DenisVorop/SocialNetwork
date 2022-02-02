@@ -135,6 +135,19 @@
             background-color: #6b6b6b;
         }
     }
+
+    &__block {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        line-height: 35px;
+        color: #FFFFFF;
+        margin: -3px -5px;
+        padding: 3px 5px;
+        span {
+            width: 250px;
+        }
+    }
 }
 
 //========================================================================================================================================================

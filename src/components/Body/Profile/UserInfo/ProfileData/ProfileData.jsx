@@ -1,4 +1,3 @@
-import ui from '../../../../../scss/ui.module.scss';
 
 //========================================================================================================================================================
 
@@ -23,12 +22,6 @@ const ProfileData = (props) => {
     )
 }
 
-export default ProfileData;
+//========================================================================================================================================================
 
-// const Contacts = (props) => {
-//     return (
-//         <div className={ui.contacts}>
-//             <b>{props.contactTitle}:</b> {props.contactValue}
-//         </div>
-//     )
-// }
+export default ProfileData;

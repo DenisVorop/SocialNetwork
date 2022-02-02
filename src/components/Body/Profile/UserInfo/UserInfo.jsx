@@ -5,6 +5,7 @@ import ProfileDataForm from './ProfileData/ProfileDataForm';
 import ProfileData from './ProfileData/ProfileData';
 import { Formik } from 'formik';
 import settings from '../../../../assets/images/settings.svg';
+import ui from '../../../../scss/ui.module.scss';
 
 //========================================================================================================================================================
 
@@ -37,7 +38,6 @@ let UserInfo = (props) => {
         setEditMode(true)
     }
 
-
     return (
         <div className="contact-area">
             <div className="contact">
@@ -68,7 +68,15 @@ let UserInfo = (props) => {
                                         }
                                     </div>
                                     <p>
-                                        <UserStatus status={props.status} updateStatus={props.updateStatus} />
+                                        {props.isOwner
+                                            ? <UserStatus status={props.status} updateStatus={props.updateStatus} />
+                                            :
+                                            <div>
+                                                <div className={ui.input__block}>
+                                                    <span>{props.status || 'No status :C'}</span>
+                                                </div>
+                                            </div>
+                                        }
                                     </p>
                                     <div>
                                         {editMode
@@ -78,17 +86,22 @@ let UserInfo = (props) => {
                                     </div>
                                 </div>
                             </aside>
-                            <button onClick={toggleClass} className={isActive ? 'button active' : 'button'}>
-                                <span>Contact Me</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g className="nc-icon-wrapper" fill="#444444"> <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path> </g> </svg>
-                            </button>
+                            {props.isOwner &&
+                                <span>
+                                    {editMode
+                                        ? null
+                                        : <button onClick={toggleClass} className={isActive ? 'button active' : 'button'}>
+                                            <span>Contact Me</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g className="nc-icon-wrapper" fill="#444444"> <path d="M14.83 30.83L24 21.66l9.17 9.17L36 28 24 16 12 28z"></path> </g> </svg>
+                                        </button>
+                                    }
+                                </span>
+                            }
                         </div>
-                        <div className={isActive ? 'title active' : 'title'}><p>Contact Me</p></div>
+                        {!editMode && <div className={isActive ? 'title active' : 'title'}><p>Contact Me</p></div>}
                     </section>
                 </main>
-
-                <ContactsLinks profile={props.profile} isActive={isActive} />
-
+                {!editMode && <ContactsLinks profile={props.profile} isActive={isActive} />}
             </div>
         </div>
     );
