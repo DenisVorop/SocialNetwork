@@ -7,7 +7,8 @@
     &__list {
         display: flex;
         align-items: center;
-        // padding: 10px;
+        position: relative;
+        z-index: 200;
 
         a:not(:last-child) {
             margin: 0px 10px 0px 0px;

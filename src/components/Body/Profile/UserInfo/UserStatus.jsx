@@ -26,7 +26,7 @@ const UserStatus = (props) => {
     }
 
     return (
-        <div>
+        <div className='profile__status'>
             {!editMode &&
                 <div>
                     <div onClick={activateEditMode} className={ui.input__div}>

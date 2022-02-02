@@ -4,6 +4,7 @@ import UserStatus from './UserStatus';
 import ProfileDataForm from './ProfileData/ProfileDataForm';
 import ProfileData from './ProfileData/ProfileData';
 import { Formik } from 'formik';
+import settings from '../../../../assets/images/settings.svg';
 
 //========================================================================================================================================================
 
@@ -32,6 +33,11 @@ let UserInfo = (props) => {
         })
     }
 
+    const goToEditMode = () => {
+        setEditMode(true)
+    }
+
+
     return (
         <div className="contact-area">
             <div className="contact">
@@ -47,12 +53,29 @@ let UserInfo = (props) => {
                                 </div>
                             }
                             <aside>
-                                <img src={props.profile.photos.large ? props.profile.photos.large : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/256492/_mLIxaKY_400x400.jpg"} alt="Profile Image" />
+                                <div className='profile__image'>
+                                    <img src={props.profile.photos.large ? props.profile.photos.large : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/256492/_mLIxaKY_400x400.jpg"} alt="Profile Image" />
+                                </div>
                                 <div>
-                                    <h1 className='profile__username'>{props.profile.fullName ? props.profile.fullName : 'Riccardo Cavallo'}</h1>
+                                    <div className='profile__user'>
+                                        <h1 className='profile__username'>{props.profile.fullName ? props.profile.fullName : 'Riccardo Cavallo'}</h1>
+                                        {props.isOwner &&
+                                            <div>
+                                                <button className='profile__edit' onClick={goToEditMode}>
+                                                    <img src={settings} alt="" />
+                                                </button>
+                                            </div>
+                                        }
+                                    </div>
                                     <p>
                                         <UserStatus status={props.status} updateStatus={props.updateStatus} />
                                     </p>
+                                    <div>
+                                        {editMode
+                                            ? <ProfileDataForm initialValues={props.profile} profile={props.profile} onSubmit={onSubmit} />
+                                            : <ProfileData profile={props.profile} isOwner={props.isOwner} />
+                                        }
+                                    </div>
                                 </div>
                             </aside>
                             <button onClick={toggleClass} className={isActive ? 'button active' : 'button'}>
@@ -65,11 +88,6 @@ let UserInfo = (props) => {
                 </main>
 
                 <ContactsLinks profile={props.profile} isActive={isActive} />
-
-                {editMode
-                    ? <ProfileDataForm initialValues={props.profile} profile={props.profile} onSubmit={onSubmit} />
-                    : <ProfileData profile={props.profile} isOwner={props.isOwner} goToEditMode={() => { setEditMode(true) }} />
-                }
 
             </div>
         </div>

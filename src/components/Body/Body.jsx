@@ -4,10 +4,6 @@ import Music from './Music/Music';
 import Settings from './Settings/Settings';
 import './Body.scss';
 import { Route, Routes } from 'react-router-dom';
-// import MessagesContainer from './Messages/MessagesContainer';
-// import UsersContainer from './Users/UsersContainer';
-// import ProfileContainer from './Profile/ProfileContainer';
-// import Login from './Login/Login';
 import React, { lazy, Suspense } from 'react';
 import Preloader from '../common/Preloader/Preloader';
 
@@ -30,7 +26,7 @@ const Body = () => {
                                 element={<Login />} />
                             <Route path='/profile'
                                 element={<ProfileContainer />}>
-                                <Route path=':userId'
+                                <Route path='/profile:userId'
                                     element={<ProfileContainer />} />
                             </Route>
                             <Route path='/messages/*'

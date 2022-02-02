@@ -11,6 +11,7 @@ const FormLogin = (props) => {
         password: yup.string().typeError('string expected!').required('Obligatory field!'),
         confirmPassword: yup.string().oneOf([yup.ref('password')], ('Password mismatch!')).required('Obligatory field!')
     })
+    console.log(props)
     return (
         <>
             <Formik
@@ -18,6 +19,7 @@ const FormLogin = (props) => {
                     login: '',
                     password: '',
                     confirmPassword: '',
+                    captcha: '',
                 }}
                 validateOnBlur={false}
                 validateOnChange={false}
@@ -74,6 +76,20 @@ const FormLogin = (props) => {
                                     {touched.confirmPassword && errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
                                 </div>
                             </div>
+                            {props.captchaUrl && <img src={props.captchaUrl} />}
+                            {props.captchaUrl &&
+                                <p>
+                                    <label htmlFor={`captcha`}>Anti-bot symbol</label><br />
+                                    <input
+                                        className={ui.input}
+                                        type="captcha"
+                                        name='captcha'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.captcha}
+                                    />
+                                </p>
+                            }
                             <div className={ui.error}>
                                 {status}
                             </div>

@@ -15,37 +15,37 @@ const ProfileDataForm = (props) => {
     console.log(props)
 
     return (
-        <>
-            <Formik
-                initialValues={{
-                    fullName: '',
-                    lookingForAJob: '',
-                    lookingForAJobDescription: '',
-                    aboutMe: '',
-                    contacts: {
-                        vk: '',
-                        instagram: '',
-                        github: '',
-                    },
-                }}
-                validateOnBlur={false}
-                validateOnChange={false}
-                onSubmit={(values, { setSubmitting, setStatus }) => {
-                    props.onSubmit(values, setStatus);
-                    setSubmitting(false);
-                }}
-                validationSchema={validationProfile}
-            >
-                {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, status }) => (
-                    <Form>
-                        <div>
-                            <button
-                                onClick={handleSubmit}
-                                type='submit'
-                                disabled={!isValid && !dirty}
-                            >save</button>
-                        </div>
-                        <div className='form'>
+        <div className='profile__wpform'>
+            <div className='profile__form'>
+                <Formik
+                    initialValues={{
+                        fullName: '',
+                        lookingForAJob: '',
+                        lookingForAJobDescription: '',
+                        aboutMe: '',
+                        contacts: {
+                            vk: '',
+                            instagram: '',
+                            github: '',
+                        },
+                    }}
+                    validateOnBlur={false}
+                    validateOnChange={false}
+                    onSubmit={(values, { setSubmitting, setStatus }) => {
+                        props.onSubmit(values, setStatus);
+                        setSubmitting(false);
+                    }}
+                    validationSchema={validationProfile}
+                >
+                    {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, status }) => (
+                        <Form>
+                            <div>
+                                <button
+                                    onClick={handleSubmit}
+                                    type='submit'
+                                    disabled={!isValid && !dirty}
+                                >save</button>
+                            </div>
                             <div className="login__form">
                                 <p>
                                     <label htmlFor={`fullName`}>Username</label><br />
@@ -55,7 +55,8 @@ const ProfileDataForm = (props) => {
                                         name='fullName'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.fullName}
+                                        value={values.fullName || props.initialValues.fullName}
+                                        placeholder='field is required'
                                     />
                                 </p>
                                 {touched.fullName && errors.fullName && <p className={ui.error}>{errors.fullName}</p>}
@@ -78,7 +79,8 @@ const ProfileDataForm = (props) => {
                                         name='lookingForAJobDescription'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.lookingForAJobDescription}
+                                        value={values.lookingForAJobDescription || props.initialValues.lookingForAJobDescription}
+                                        placeholder='field is required'
                                     />
                                 </p>
                                 {touched.lookingForAJobDescription && errors.lookingForAJobDescription && <p className={ui.error}>{errors.lookingForAJobDescription}</p>}
@@ -90,7 +92,8 @@ const ProfileDataForm = (props) => {
                                         name='aboutMe'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={string ? props.initialValues.aboutMe : values.aboutMe}
+                                        value={values.aboutMe || props.initialValues.aboutMe}
+                                        placeholder='field is required'
                                     />
                                 </p>
                                 {touched.aboutMe && errors.aboutMe && <p className={ui.error}>{errors.aboutMe}</p>}
@@ -130,15 +133,15 @@ const ProfileDataForm = (props) => {
                                         />
                                     </p>
                                 </div>
+                                <div className={ui.error}>
+                                    {status}
+                                </div>
                             </div>
-                            <div className={ui.error}>
-                                {status}
-                            </div>
-                        </div>
-                    </Form>
-                )}
-            </Formik>
-        </>
+                        </Form>
+                    )}
+                </Formik>
+            </div>
+        </div>
     )
 }
 

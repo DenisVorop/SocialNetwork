@@ -9,9 +9,9 @@ import React from 'react';
 
 const Login = (props) => {
     let getValues = (values, setStatus) => {
-        props.login(values.login, values.password, setStatus);
+        props.login(values.login, values.password, setStatus, values.captcha);
     }
-
+console.log(props)
     if (props.isAuth) {
         return <Navigate to='/profile' />
     }
@@ -19,7 +19,7 @@ const Login = (props) => {
     return (
         <div className="body__login login-body">
             <div className="login-body__form">
-                <FormLogin getValues={getValues} />
+                <FormLogin getValues={getValues} captchaUrl={props.captchaUrl}/>
             </div>
         </div>
     )
@@ -27,8 +27,9 @@ const Login = (props) => {
 
 const MapStateToProps = (state) => ({
     isAuth: state.authReducer.isAuth,
+    captchaUrl: state.authReducer.captchaUrl,
 })
 
 //========================================================================================================================================================
 
-export default connect(MapStateToProps, { login, })(Login);
+export default connect(MapStateToProps, { login })(Login);

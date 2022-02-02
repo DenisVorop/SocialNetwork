@@ -115,6 +115,9 @@
     font-size: 16px;
     padding: 5px;
     width: 250px;
+    &::placeholder {
+        color: #aaa;
+    }
 
     &__div {
         display: flex;
