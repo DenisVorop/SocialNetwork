@@ -53,7 +53,7 @@ const ProfileDataForm = (props) => {
                                         name='fullName'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.fullName || props.initialValues.fullName}
+                                        value={values.fullName}
                                         placeholder='field is required'
                                     />
                                 </p>
@@ -77,7 +77,8 @@ const ProfileDataForm = (props) => {
                                         name='lookingForAJobDescription'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.lookingForAJobDescription || props.initialValues.lookingForAJobDescription}
+                                        value={values.lookingForAJobDescription}
+                                        // value={values.lookingForAJobDescription || props.initialValues.lookingForAJobDescription}
                                         placeholder='field is required'
                                     />
                                 </p>
@@ -90,7 +91,7 @@ const ProfileDataForm = (props) => {
                                         name='aboutMe'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        value={values.aboutMe || props.initialValues.aboutMe}
+                                        value={values.aboutMe}
                                         placeholder='field is required'
                                     />
                                 </p>
