@@ -10,7 +10,7 @@ const TOOGLE_IS_FOLOWING_PROGRESS = 'userReducer/TOOGLE_IS_FOLOWING_PROGRESS';
 
 //========================================================================================================================================================
 
-let initialState = {
+const initialState = {
     usersData: [],
     pageSize: 8,
     totalUsersCount: 0,
