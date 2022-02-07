@@ -12,7 +12,7 @@ import Preloader from '../common/Preloader/Preloader';
 const Login = lazy(() => import('./Login/Login'));
 const ProfileContainer = lazy(() => import('./Profile/ProfileContainer'));
 const MessagesContainer = lazy(() => import('./Messages/MessagesContainer'));
-const UsersContainer = lazy(() => import('./Users/UsersContainer'));
+const UsersContainer = lazy(() => import('./Users/UsersContainer.tsx'));
 
 const Body = () => {
     return (

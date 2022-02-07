@@ -1,14 +1,8 @@
+import { messageType, dialogType } from './../types/Types';
 const ADD_MESSAGE = 'messagesReducer/ADD_MESSAGE';
 
 //========================================================================================================================================================
-type messageType = {
-    id: number,
-    message: string,
-}
-type dialogType = {
-    id: number,
-    name: string,
-}
+
 let initialState = {
     messageData: [
         { id: 1, message: 'Hello, my Dear friend!' },

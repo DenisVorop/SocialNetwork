@@ -7,14 +7,14 @@ type PropsType = {
     totalUsersCount: number;
     pageSize: number;
     currentPage: number;
-    onPageChanged: () => void;
+    onPageChanged: (pageNumber: number) => void;
 }
 
-const Paginator = (props) => {
+const Paginator: React.FC<PropsType> = (props) => {
     let portionSize = 10;
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
-    let pages = [];
+    let pages: Array<number> = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
@@ -33,17 +33,16 @@ const Paginator = (props) => {
         <div className='users-body__pages'>
             {portionNumber > 1 &&
                 <button className={ui._btn} onClick={() => { setPortionNumber(portionNumber - 1) }}>Prev</button>}
-
             {pages
                 .filter(page => page >= leftPortionPageNumber && page <= rightPortionPageNumber)
                 .map((page) => {
                     return <div className='users-body__page'>
+                    {/* @ts-ignore */}
                         <div key={page.id} onClick={(e) => { props.onPageChanged(page) }} className={props.currentPage === page ? ui.selected : ui.num}>
                             {page}
                         </div>
                     </div>
                 })}
-
             {portionCount > portionNumber &&
                 <button className={ui._btn} onClick={() => { setPortionNumber(portionNumber + 1) }}>Next</button>}
         </div>

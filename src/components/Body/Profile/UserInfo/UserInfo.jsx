@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Preloader from '../../../common/Preloader/Preloader';
-import UserStatus from './UserStatus';
+import UserStatus from './UserStatus.tsx';
 import ProfileDataForm from './ProfileData/ProfileDataForm';
 import ProfileData from './ProfileData/ProfileData';
 import { Formik } from 'formik';

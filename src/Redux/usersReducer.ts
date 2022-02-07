@@ -1,5 +1,5 @@
+import { UsersDataType } from './../types/Types';
 import { usersAPI } from "../api/api";
-import { initialStatePhotosType } from '../types/PhotosType';
 
 //========================================================================================================================================================
 
@@ -13,15 +13,8 @@ const TOOGLE_IS_FOLOWING_PROGRESS = 'userReducer/TOOGLE_IS_FOLOWING_PROGRESS';
 
 //========================================================================================================================================================
 
-type initialStateUsersDataType = {
-    id: number,
-    name: string,
-    status: string,
-    photos: initialStatePhotosType,
-}
-
 const initialState = {
-    usersData: [] as Array<initialStateUsersDataType>,
+    usersData: [] as Array<UsersDataType>,
     pageSize: 8 as number,
     totalUsersCount: 0 as number,
     currentPage: 1 as number,
@@ -114,7 +107,7 @@ export const unfollowSuccess = (userId: number): unfollowSuccessType => {
 }
 type setUsersType = {
     type: typeof SET_USERS,
-    usersData: Array<initialStateUsersDataType>,
+    usersData: Array<UsersDataType>,
 }
 export const setUsers = (usersData: any): setUsersType => {
     return ({

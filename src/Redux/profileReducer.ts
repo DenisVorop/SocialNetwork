@@ -1,5 +1,5 @@
+import { PostDataType, ProfileType, PhotosType } from '../types/Types';
 import { profileAPI } from "../api/api";
-import { initialStatePhotosType } from '../types/PhotosType';
 
 //==============CONSTS==========================================================================================================================================
 
@@ -9,38 +9,14 @@ const SET_STATUS = 'profileReducer/SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'profileReducer/SAVE_PHOTO_SUCCESS'
 
 //========================================================================================================================================================
-type initialStatePostDataType = {
-    id: number,
-    message: string
-}
-
-type initialStateProfileType = {
-    userId: number,
-    lookingForAJob: boolean,
-    lookingForAJobDescription: string,
-    fullName: string,
-    contacts: initialStateContactsType,
-    photos: initialStatePhotosType,
-}
-
-type initialStateContactsType = {
-    github: string,
-    vk: string,
-    facebook: string,
-    instagram: string,
-    twitter: string,
-    website: string,
-    youtube: string,
-    mainLink: string,
-}
 
 let initialState = {
     postData: [
         { id: 1, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vehicula fringilla odio quis eleifend. Curabitur.' },
         { id: 2, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mauris diam, porta luctus est id, mollis venenatis augue. Praesent euismod nunc vitae eros commodo, quis euismod enim gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus dolor vel ipsum mattis hendrerit. Aliquam iaculis scelerisque odio vel euismod. Vestibulum pretium mauris ac nisi suscipit.' },
         { id: 3, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel pretium orci, eget aliquam sem. Praesent quis nibh fringilla, pretium lacus tempor, tincidunt risus. Nam in scelerisque leo. Morbi dolor.' },
-    ] as Array<initialStatePostDataType>,
-    profile: null as initialStateProfileType | null,
+    ] as Array<PostDataType>,
+    profile: null as ProfileType | null,
     status: '',
 }
 
@@ -113,9 +89,9 @@ export const setStatus = (status: string): setStatusType => {
 }
 type savePhotoSuccessType = {
     type: typeof SAVE_PHOTO_SUCCESS,
-    photos: initialStatePhotosType,
+    photos: PhotosType,
 }
-export const savePhotoSuccess = (photos: initialStatePhotosType): savePhotoSuccessType => {
+export const savePhotoSuccess = (photos: PhotosType): savePhotoSuccessType => {
     return ({
         type: SAVE_PHOTO_SUCCESS,
         photos: photos,
@@ -152,7 +128,7 @@ export const savePhoto = (file: any) => {
         }
     }
 }
-export const saveProfile = (profile: initialStateProfileType, setStatus: any) => {
+export const saveProfile = (profile: ProfileType, setStatus: any) => {
     return async (dispatch: any, getState: any) => {
         const userId = getState().authReducer.userId;
         const response = await profileAPI.saveProfile(profile)
