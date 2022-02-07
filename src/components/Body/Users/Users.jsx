@@ -2,7 +2,7 @@ import userPhoto from '../../../assets/images/user.svg';
 import Preloader from '../../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import Paginator from '../../common/Paginator/Paginator';
+import Paginator from '../../common/Paginator/Paginator.tsx';
 import ui from '../../../scss/ui.module.scss';
 
 //========================================================================================================================================================
@@ -13,7 +13,7 @@ const Users = (props) => {
             <div className='body__users users-body'>
                 <div className='users-body__cards'>
                     {props.isFetching ? <Preloader /> :
-                        props.usersData.map(user =>
+                        props.usersData.map((user) =>
                             <div key={user.id} className="users-body__card card-users-body">
                                 <div className="border">
                                     <div className="wrap">

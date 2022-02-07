@@ -10,7 +10,7 @@ import * as yup from 'yup';
 
 let MyPosts = React.memo((props) => {
     let postElements = props.posts
-        .map(post =>
+        .map((post) =>
             <div className="profile-body__wrapper-post">
                 <Post message={post.message} key={post.id} />
             </div>)
@@ -46,6 +46,7 @@ let MyPosts = React.memo((props) => {
                                                     placeholder='Write smth here and tap to btn'
                                                     className={ui._area}
                                                     type="text"
+                                                    htmlFor={`newPostText`}
                                                     name='newPostText'
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}

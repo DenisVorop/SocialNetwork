@@ -1,9 +1,10 @@
-.body__login {}
+.login {
 
-.login-body {
-    background: #938f8f;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
+    &__body {
+        background: #938f8f;
+        border-radius: 25px;
+        padding: 20px
+    }
 
     &__form {
         padding: 20px 30px;
@@ -15,28 +16,22 @@
     padding: 20px;
     width: 420px;
     border-radius: 24px;
+
     * {
         margin: 0px 0px 5px 0px;
     }
-}
-
-.login__form {
-    margin: 0px 0px 20px 0px;
 }
 
 .password__form {
     margin: 0px 0px 0px 0px;
     display: flex;
 }
+
 .password {
-    margin: 0px 20px 0px 0px;
+    display: flex;
 }
 
-.button__form {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-}
+.button__form {}
 
 .error {
     font-size: 12px;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addMessageActionCreator } from '../../../Redux/messagesReducer';
+import { addMessageActionCreator } from '../../../Redux/messagesReducer.ts';
 import Messages from './Messages';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';

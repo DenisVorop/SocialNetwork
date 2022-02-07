@@ -1,10 +1,10 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
-import appReducer from "./appReducer";
-import authReducer from "./authReducer";
-import messagesReducer from "./messagesReducer";
-import profileReducer from "./profileReducer";
-import usersReducer from "./usersReducer";
+import appReducer from "./appReducer.ts";
+import authReducer from "./authReducer.ts";
+import messagesReducer from "./messagesReducer.ts";
+import profileReducer from "./profileReducer.ts";
+import usersReducer from "./usersReducer.ts";
 
 //========================================================================================================================================================
 

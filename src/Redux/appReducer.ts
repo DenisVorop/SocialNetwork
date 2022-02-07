@@ -1,4 +1,4 @@
-import { getAuth } from "./authReducer";
+import { getAuth } from "./authReducer.ts";
 
 //========================================================================================================================================================
 
@@ -6,11 +6,15 @@ const INITIALIZED_SUCCESS = 'appReducer/INITIALIZED_SUCCESS';
 
 //========================================================================================================================================================
 
-let initialState = {
+export type initialStateType = {
+    initialized: boolean,
+}
+
+let initialState: initialStateType = {
     initialized: false,
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any):initialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS: {
             return {
@@ -24,7 +28,11 @@ const appReducer = (state = initialState, action) => {
 
 //=========ACTION CREATORS===============================================================================================================================================
 
-export const initializedSuccess = () => {
+type initializedSuccessActionType = {
+    type: typeof INITIALIZED_SUCCESS
+}
+
+export const initializedSuccess = ():initializedSuccessActionType => {
     return ({
         type: INITIALIZED_SUCCESS,
     })
@@ -33,7 +41,7 @@ export const initializedSuccess = () => {
 //================THUNK CREATORS========================================================================================================================================
 
 export const initializedApp = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         await dispatch(getAuth());
         dispatch(initializedSuccess());
     }

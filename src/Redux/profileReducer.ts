@@ -1,25 +1,52 @@
 import { profileAPI } from "../api/api";
+import { initialStatePhotosType } from '../types/PhotosType';
 
 //==============CONSTS==========================================================================================================================================
 
 const ADD_POST = 'profileReducer/ADD_POST';
 const SET_USER_PROFILE = 'profileReducer/SET_USER_PROFILE';
 const SET_STATUS = 'profileReducer/SET_STATUS';
-const SAVE_PHOTO_SUCCESS ='profileReducer/SAVE_PHOTO_SUCCESS'
+const SAVE_PHOTO_SUCCESS = 'profileReducer/SAVE_PHOTO_SUCCESS'
 
 //========================================================================================================================================================
+type initialStatePostDataType = {
+    id: number,
+    message: string
+}
+
+type initialStateProfileType = {
+    userId: number,
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string,
+    fullName: string,
+    contacts: initialStateContactsType,
+    photos: initialStatePhotosType,
+}
+
+type initialStateContactsType = {
+    github: string,
+    vk: string,
+    facebook: string,
+    instagram: string,
+    twitter: string,
+    website: string,
+    youtube: string,
+    mainLink: string,
+}
 
 let initialState = {
     postData: [
         { id: 1, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vehicula fringilla odio quis eleifend. Curabitur.' },
         { id: 2, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mauris diam, porta luctus est id, mollis venenatis augue. Praesent euismod nunc vitae eros commodo, quis euismod enim gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus dolor vel ipsum mattis hendrerit. Aliquam iaculis scelerisque odio vel euismod. Vestibulum pretium mauris ac nisi suscipit.' },
         { id: 3, message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel pretium orci, eget aliquam sem. Praesent quis nibh fringilla, pretium lacus tempor, tincidunt risus. Nam in scelerisque leo. Morbi dolor.' },
-    ],
-    profile: null,
+    ] as Array<initialStatePostDataType>,
+    profile: null as initialStateProfileType | null,
     status: '',
 }
 
-const profileReducer = (state = initialState, action) => {
+export type initialStateType = typeof initialState;
+
+const profileReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -46,7 +73,7 @@ const profileReducer = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS: {
             return {
                 ...state,
-                profile: {...state.profile, photos: action.photos},
+                profile: { ...state.profile, photos: action.photos },
             };
         }
         default: return state;
@@ -54,26 +81,41 @@ const profileReducer = (state = initialState, action) => {
 }
 
 //=========ACTION CREATORS===============================================================================================================================================
-
-export const addPostActionCreator = (newPostText) => {
+type addPostActionCreatorType = {
+    type: typeof ADD_POST,
+    newPostText: string,
+}
+export const addPostActionCreator = (newPostText: string): addPostActionCreatorType => {
     return ({
         type: ADD_POST,
         newPostText: newPostText,
     })
 }
-export const setUserProfile = (userId) => {
+type setUserProfileType = {
+    type: typeof SET_USER_PROFILE,
+    profile: number,
+}
+export const setUserProfile = (userId: number): setUserProfileType => {
     return ({
         type: SET_USER_PROFILE,
         profile: userId,
     })
 }
-export const setStatus = (status) => {
+type setStatusType = {
+    type: typeof SET_STATUS,
+    status: string,
+}
+export const setStatus = (status: string): setStatusType => {
     return ({
         type: SET_STATUS,
         status: status,
     })
 }
-export const savePhotoSuccess = (photos) => {
+type savePhotoSuccessType = {
+    type: typeof SAVE_PHOTO_SUCCESS,
+    photos: initialStatePhotosType,
+}
+export const savePhotoSuccess = (photos: initialStatePhotosType): savePhotoSuccessType => {
     return ({
         type: SAVE_PHOTO_SUCCESS,
         photos: photos,
@@ -82,36 +124,36 @@ export const savePhotoSuccess = (photos) => {
 
 //================THUNK CREATORS========================================================================================================================================
 
-export const setUser = (userId) => {
-    return async (dispatch) => {
+export const setUser = (userId: number) => {
+    return async (dispatch: any) => {
         const response = await profileAPI.getUser(userId);
         dispatch(setUserProfile(response.data));
     }
 }
-export const getStatus = (userId) => {
-    return async (dispatch) => {
+export const getStatus = (userId: number) => {
+    return async (dispatch: any) => {
         const response = await profileAPI.getStatus(userId)
         dispatch(setStatus(response.data));
     }
 }
-export const updateStatus = (status) => {
-    return async (dispatch) => {
+export const updateStatus = (status: string) => {
+    return async (dispatch: any) => {
         const response = await profileAPI.updateStatus(status)
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
         }
     }
 }
-export const savePhoto = (file) => {
-    return async (dispatch) => {
+export const savePhoto = (file: any) => {
+    return async (dispatch: any) => {
         const response = await profileAPI.savePhoto(file)
         if (response.data.resultCode === 0) {
             dispatch(savePhotoSuccess(response.data.data.photos));
         }
     }
 }
-export const saveProfile = (profile, setStatus) => {
-    return async (dispatch, getState) => {
+export const saveProfile = (profile: initialStateProfileType, setStatus: any) => {
+    return async (dispatch: any, getState: any) => {
         const userId = getState().authReducer.userId;
         const response = await profileAPI.saveProfile(profile)
         if (response.data.resultCode === 0) {

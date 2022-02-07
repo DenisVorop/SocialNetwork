@@ -4,16 +4,6 @@
     display: flex;
     padding: 0px 0px 25px 0px;
 
-    &__user {}
-
-    &__user-info {}
-
-    &__avatar {}
-
-    &__avatar img {}
-
-    &__info {}
-
     &__posts {
         width: 620px;
     }
@@ -31,13 +21,9 @@
         margin: 0px 0px 5px 0px;
     }
 
-    &__myPosts {}
-
     &__form {
         margin: 0px 0px 10px 0px;
         display: flex;
-
-        form {}
 
         textarea {
             background: #FFFFFF;
@@ -194,24 +180,9 @@
         z-index: 222;
 }
 
-.info-profile-body {
-
-    &__name {}
-
-    &__job {}
-
-    &__inst {}
-
-    &__vk {}
-
-    &__website {}
-}
-
 .error {
     color: red;
 }
-
-.post__element {}
 
 /* COLORS
 ========================================== */
@@ -283,8 +254,6 @@ $twitter: #1da1f2;
 
 /* CONTACT
 ========================================== */
-
-.contact-area {}
 
 .contact {
     position: relative;
@@ -583,7 +552,7 @@ $twitter: #1da1f2;
     }
 }
 
-.custom-file-upload {
+.custom__file-upload {
     border: 1px solid #ccc;
     cursor: pointer;
     opacity: 0;
@@ -607,7 +576,7 @@ $twitter: #1da1f2;
     transition: all .3s ease 0s;
 }
 
-.custom-file-upload:hover {
+.custom__file-upload:hover {
     opacity: .5;
     background-color: #aaa;
     transition: all .3s ease 0s;

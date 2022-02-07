@@ -5,25 +5,18 @@
 //========================================================================================================================================================
 
 ._btn {
-    text-decoration: none;
-    display: block;
-    border: 1px solid #fff;
-    white-space: nowrap;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    font-size: 14px;
-    line-height: 1.6;
-    outline: none;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    color: #fff;
-    margin: 0px 0px 0px 0px;
-    transition: .3s ease-in-out;
+    padding: 4px 25px;
+    background: #D9D9D9;
+    border-radius: 25px;
+    color: #000;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 35px;
 
     &:hover {
-        box-shadow: 0 0 5px 0 #000 inset, 0 0 20px 1px #fff;
-        color: #fff;
+        box-shadow: 0 0 15px #B5E48C;
     }
 }
 

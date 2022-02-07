@@ -10,7 +10,7 @@ import Body from './components/Body/Body';
 import HeaderContainer from './components/Header/HeaderContainer';
 import React from 'react';
 import { connect } from 'react-redux';
-import { initializedApp } from './Redux/appReducer';
+import { initializedApp } from './Redux/appReducer.ts';
 import Preloader from './components/common/Preloader/Preloader';
 
 //========================================================================================================================================================

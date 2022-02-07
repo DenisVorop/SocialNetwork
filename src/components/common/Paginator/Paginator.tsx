@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 
 //========================================================================================================================================================
 
+type PropsType = {
+    totalUsersCount: number;
+    pageSize: number;
+    currentPage: number;
+    onPageChanged: () => void;
+}
+
 const Paginator = (props) => {
     let portionSize = 10;
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    // console.log(props.totalUsersCount)
-    // console.log(props.pageSize)
-    // console.log(pagesCount)
 
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -34,7 +38,7 @@ const Paginator = (props) => {
                 .filter(page => page >= leftPortionPageNumber && page <= rightPortionPageNumber)
                 .map((page) => {
                     return <div className='users-body__page'>
-                        <div key={page} onClick={(e) => { props.onPageChanged(page) }} className={props.currentPage === page ? ui.selected : ui.num}>
+                        <div key={page.id} onClick={(e) => { props.onPageChanged(page) }} className={props.currentPage === page ? ui.selected : ui.num}>
                             {page}
                         </div>
                     </div>
