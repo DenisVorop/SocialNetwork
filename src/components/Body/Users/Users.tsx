@@ -1,10 +1,13 @@
+// @ts-ignore
 import userPhoto from '../../../assets/images/user.svg';
 import Preloader from '../../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 import React from 'react';// @ts-ignore
-import Paginator from '../../common/Paginator/Paginator.tsx';
+import Paginator from '../../common/Paginator/Paginator.tsx';// @ts-ignore
 import ui from '../../../scss/ui.module.scss';// @ts-ignore
-import { UsersDataType } from './../types/Types';
+import { UsersDataType } from './../types/Types';// @ts-ignore
+import UsersSearchForm from './UsersSearchForm.tsx';
+import { FilterType } from '../../../Redux/usersReducer';
 
 //========================================================================================================================================================
 
@@ -18,12 +21,14 @@ type PropsType = {
     onPageChanged: (pageNumber: number) => void;
     unfollow: (userId: number) => void;
     follow: (userId: number) => void;
+    onFilterChanged: (filter: FilterType) => void;
 }
 
 const Users: React.FC<PropsType> = (props) => {
     return <>
         <div className="body__page">
             <div className='body__users users-body'>
+                <UsersSearchForm onFilterChanged={props.onFilterChanged} />
                 <div className='users-body__cards'>
                     {props.isFetching ? <Preloader /> :
                         props.usersData.map((user: UsersDataType) => <div key={user.id} className="users-body__card card-users-body">
@@ -61,7 +66,6 @@ const Users: React.FC<PropsType> = (props) => {
         </div>
     </>;
 }
-
 
 //========================================================================================================================================================
 
