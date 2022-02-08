@@ -30,7 +30,7 @@ const Users: React.FC<PropsType> = (props) => {
                             <div className="border">
                                 <div className="wrap">
                                     <div className="product-wrap">
-                                        <img src={user.photos.small != null ? user.photos.small : userPhoto} />
+                                        <img src={user.photos.small != null ? user.photos.small : userPhoto} alt='add user photos' />
                                     </div>
                                     <div className="loop-action">
                                         <NavLink to={'/profile/' + user.id} className="add-to-cart">Go to user</NavLink>

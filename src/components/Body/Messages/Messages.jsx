@@ -5,27 +5,27 @@ import '../Profile/Profile.scss'
 import ui from '../../../scss/ui.module.scss';
 import React from 'react';
 
-import { Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 import arrow from '../../../assets/images/arrrow.svg'
 
 //========================================================================================================================================================
 
 const Messages = (props) => {
-
     let dialogsElements =
         props.stateMessagesPage.dialogData
-            .map((dialog) =>
-                <NavLink to='' className={diaData => diaData.isActive ? ui.dialog_active : ui.dialog}>
-                    <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />
-                </NavLink>)
+            .map((dialog, index) =>
+                // <NavLink to='' className={diaData => diaData.isActive ? ui.dialog_active : ui.dialog}>
+                    <Dialog name={dialog.name} id={dialog.id} key={index} />
+                // {/* </NavLink> */}
+                )
 
     let messagesElements =
         props.stateMessagesPage.messageData
-            .map((message) =>
-                <Message textMessage={message.message} key={message.id} />
+            .map((message, index) =>
+                <Message textMessage={message.message} key={index} />
             )
 
     const validationMessages = yup.object().shape({
@@ -46,18 +46,21 @@ const Messages = (props) => {
                     <div className="messages-body__messages">
                         {messagesElements}
                     </div>
-                    <form>
-                        <Formik
-                            initialValues={{
-                                newMessageText: '',
-                            }}
-                            validateOnBlur
-                            onSubmit={(values) => { addNewMessage(values) }}
-                            validationSchema={validationMessages}
-                        >
-                            {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
-                                <div className="messages-body__form">
-                                    <div className="profile-body__form">
+                    <Formik
+                        initialValues={{
+                            newMessageText: '',
+                        }}
+                        validateOnBlur
+                        onSubmit={(values) => {
+                            addNewMessage(values)
+                            values.newMessageText = ''
+                        }}
+                        validationSchema={validationMessages}
+                    >
+                        {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty }) => (
+                            <div className="messages-body__form">
+                                <div className="profile-body__form">
+                                    <Form>
                                         <div>
                                             <textarea placeholder='Write smth here and tap to btn'
                                                 className={ui._area}
@@ -68,21 +71,21 @@ const Messages = (props) => {
                                                 value={values.newMessageText}
                                             />
                                         </div>
-                                        <div className="profile-body__addpost">
-                                            <button
-                                                disabled={!isValid && !dirty}
-                                                onClick={handleSubmit}
-                                                type='submit'
-                                            >
-                                                <img src={arrow} alt="" />
-                                            </button>
-                                        </div>
+                                    </Form>
+                                    <div className="profile-body__addpost">
+                                        <button
+                                            disabled={!isValid && !dirty}
+                                            onClick={handleSubmit}
+                                            type='submit'
+                                        >
+                                            <img src={arrow} alt="" />
+                                        </button>
                                     </div>
-                                    {touched.newMessageText && errors.newMessageText && <p className='error'>{errors.newMessageText}</p>}
                                 </div>
-                            )}
-                        </Formik>
-                    </form>
+                                {touched.newMessageText && errors.newMessageText && <p className='error'>{errors.newMessageText}</p>}
+                            </div>
+                        )}
+                    </Formik>
                 </div>
             </div>
         </div>

@@ -76,7 +76,7 @@ const FormLogin = (props) => {
                                 {touched.confirmPassword && errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
                             </div>
                         </div >
-                        {props.captchaUrl && <img src={props.captchaUrl} />}
+                        {props.captchaUrl && <img src={props.captchaUrl.captchaUrl} alt='img captcha' />}
                         {props.captchaUrl &&
                             <p>
                                 <label htmlFor={`captcha`}>Anti-bot symbol</label><br />

@@ -3,7 +3,7 @@ import ui from '../../../../scss/ui.module.scss';
 import arrow from '../../../../assets/images/arrrow.svg'
 import React from 'react';
 
-import { Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 
 //========================================================================================================================================================
@@ -29,50 +29,53 @@ let MyPosts = React.memo((props) => {
                 <div className="profile-body__my">My posts</div>
                 <div className="profile-body__myPosts">
                     <div className="profile-body__form">
-                        <form>
-                            <Formik
-                                initialValues={{
-                                    newPostText: '',
-                                }}
-                                validateOnBlur
-                                onSubmit={(values) => { addNewPost(values) }}
-                                validationSchema={validationPosts}
+                        <Formik
+                            initialValues={{
+                                newPostText: '',
+                            }}
+                            validateOnBlur
+                            onSubmit={(values) => {
+                                addNewPost(values)
+                                values.newPostText = ''
+                            }}
+                        validationSchema={validationPosts}
                             >
-                                {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty, setFieldValue }) => (
-                                    <div>
-                                        <div className="profile-body__form">
-                                            <div>
-                                                <textarea
-                                                    placeholder='Write smth here and tap to btn'
-                                                    className={ui._area}
-                                                    type="text"
-                                                    htmlFor={`newPostText`}
-                                                    name='newPostText'
-                                                    onChange={handleChange}
-                                                    onBlur={handleBlur}
-                                                    value={values.newPostText}
-                                                />
-                                            </div>
-                                            <div className="profile-body__addpost">
-                                                <button
-                                                    disabled={!isValid && !dirty}
-                                                    onClick={handleSubmit}
-                                                    type='submit'
-                                                >
-                                                    <img src={arrow} alt="" />
-                                                </button>
-                                            </div>
+                        {({ values, errors, touched, handleBlur, isValid, handleSubmit, handleChange, dirty, setFieldValue }) => (
+                            <div>
+                                <div className="profile-body__form">
+                                    <Form>
+                                        <div>
+                                            <textarea
+                                                placeholder='Write smth here and tap to btn'
+                                                className={ui._area}
+                                                type="text"
+                                                htmlFor={`newPostText`}
+                                                name='newPostText'
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.newPostText}
+                                            />
                                         </div>
-                                        {touched.newPostText && errors.newPostText && <p className='error'>{errors.newPostText}</p>}
+                                    </Form>
+                                    <div className="profile-body__addpost">
+                                        <button
+                                            disabled={!isValid && !dirty}
+                                            onClick={handleSubmit}
+                                            type='submit'
+                                        >
+                                            <img src={arrow} alt="" />
+                                        </button>
                                     </div>
-                                )}
-                            </Formik>
-                        </form>
-                    </div>
-                    {postElements}
+                                </div>
+                                {touched.newPostText && errors.newPostText && <p className='error'>{errors.newPostText}</p>}
+                            </div>
+                        )}
+                    </Formik>
                 </div>
+                {postElements}
             </div>
         </div>
+        </div >
     );
 })
 

@@ -1,6 +1,5 @@
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { string } from 'yup';
 import ui from '../../../../../scss/ui.module.scss';
 
 //========================================================================================================================================================
@@ -32,6 +31,10 @@ const ProfileDataForm = (props) => {
                     onSubmit={(values, { setSubmitting, setStatus }) => {
                         props.onSubmit(values, setStatus);
                         setSubmitting(false);
+                        values.fullName = props.initialValues.fullName
+                        values.lookingForAJob = props.initialValues.lookingForAJob
+                        values.lookingForAJobDescription = props.initialValues.lookingForAJobDescription
+                        values.aboutMe = props.initialValues.aboutMe
                     }}
                     validationSchema={validationProfile}
                 >
@@ -140,7 +143,7 @@ const ProfileDataForm = (props) => {
                     )}
                 </Formik>
             </div>
-        </div>
+        </div >
     )
 }
 

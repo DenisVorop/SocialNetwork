@@ -31,6 +31,7 @@
             height: 100%;
             width: 540px;
             color: #000;
+            resize: none;
         }
 
         .button {
@@ -75,7 +76,7 @@
 
     &__wrapper-post {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
 
         &:not(:last-child) {
             margin: 0px 0px 15px 0px;

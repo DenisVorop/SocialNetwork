@@ -1,4 +1,7 @@
 import { messageType, dialogType } from './../types/Types';
+
+//========================================================================================================================================================
+
 const ADD_MESSAGE = 'messagesReducer/ADD_MESSAGE';
 
 //========================================================================================================================================================
@@ -22,7 +25,9 @@ let initialState = {
 
 export type initialStateType = typeof initialState;
 
-const messagesReducer = (state = initialState, action: any): initialStateType => {
+type ActionTypes = addMessageActionCreatorType
+
+const messagesReducer = (state = initialState, action: ActionTypes): initialStateType => {
     switch (action.type) {
         case ADD_MESSAGE: {
             let newMessage = {

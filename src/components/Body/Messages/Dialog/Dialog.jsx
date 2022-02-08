@@ -10,7 +10,7 @@ const Dialog = (props) => {
         <div className='messages-body__user'>
             <NavLink to={path} className="messages-body__dialog">
                 <div className="messages-body__image">
-                    <img src={hedgehog} />
+                    <img src={hedgehog} alt='hedgehog'/>
                 </div>
                 {props.name}
             </NavLink>

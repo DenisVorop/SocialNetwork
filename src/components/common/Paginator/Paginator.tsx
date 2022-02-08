@@ -20,9 +20,10 @@ const Paginator: React.FC<PropsType> = (props) => {
     }
 
     let [portionNumber, setPortionNumber] = useState(1);
+
     useEffect(() => {
         setPortionNumber(Math.ceil(props.currentPage / portionSize))
-    }, [props.currentPage]);
+    }, [props.currentPage, portionSize]);
 
     let portionCount = Math.ceil(pagesCount / portionSize);
 
