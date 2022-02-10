@@ -6,6 +6,10 @@ import React, { useState, useEffect } from 'react';
 
 import { MessagesForm } from './MessagesForm';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { useRef } from 'react';
+// @ts-ignore
+import { dialogType } from './../types/Types.ts';
+import Dialog from './Dialog/Dialog';
 
 //========================================================================================================================================================
 
@@ -16,11 +20,31 @@ export type MessagesType = {
     userName: string
 }
 
-const Messages = (props) => {
+const initialState = {
+    dialogData: [
+        { id: 1, name: 'Darya' },
+        { id: 2, name: 'Maksim' },
+        { id: 3, name: 'Fuad' },
+        { id: 4, name: 'Faig' },
+        { id: 5, name: 'Anatolich' },
+        { id: 6, name: 'Denis' },
+    ] as Array<dialogType>,
+}
+
+const Messages = () => {
 
     const webSocket: WebSocket = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
 
-    const [messages, setMessages] = useState<MessagesType[]>([])
+    const messagesAnchorRef = useRef<HTMLDivElement>(null)
+    const [isAutoScroll, setIsAutoScroll] = useState(true)
+    const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+        const element = e.currentTarget;
+        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 300) {
+            !isAutoScroll && setIsAutoScroll(true)
+        } else {
+            isAutoScroll && setIsAutoScroll(false)
+        }
+    }
 
     useEffect(() => {
         webSocket.addEventListener('message', (e) => {
@@ -28,6 +52,13 @@ const Messages = (props) => {
             setMessages((prevMessages) => [...prevMessages, ...newMessages])
         })
     }, [])
+    const [messages, setMessages] = useState<MessagesType[]>([])
+
+    useEffect(() => {
+        if (isAutoScroll) {
+            messagesAnchorRef.current?.scrollIntoView({ behavior: 'smooth' })
+        }
+    }, [messages])
 
     const addNewMessage = (values) => {
         if (!values.newMessageText) {
@@ -36,11 +67,9 @@ const Messages = (props) => {
         webSocket.send(values.newMessageText)
     }
 
-    // const dialogsElements =
-    //     props.stateMessagesPage.dialogData
-    //         .map((dialog, index: number) =>
-    //             <Dialog name={dialog.name} id={dialog.name} key={index} />
-    //         )
+    const dialogsElements = initialState.dialogData.map((dialog, index: number) =>
+        <Dialog name={dialog.name} id={dialog.name} key={index} />
+    )
 
     const messagesElements = messages.map((message, index) =>
         <Message textMessage={message.message} key={index} image={message.photo} userName={message.userName} />
@@ -50,11 +79,14 @@ const Messages = (props) => {
         <div className="body__messages messages-body">
             <div className='messages-body__row'>
                 <div className="messages-body__dialogs">
-                    {/* {dialogsElements} */}
+                    {dialogsElements}
                 </div>
                 <div className='messages-body__right'>
-                    <div className="messages-body__messages">
+                    <div className="messages-body__messages" style={{ overflowY: 'auto' }}
+                    onScroll={scrollHandler}
+                    >
                         {messagesElements}
+                        <div ref={messagesAnchorRef}></div>
                     </div>
                     <MessagesForm addNewMessage={addNewMessage} webSocket={webSocket} />
                 </div>
