@@ -14,6 +14,7 @@
     &__card {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
         margin: 20px;
+        background: #4b4b4e;
     }
 
     &__pages {
@@ -24,6 +25,10 @@
 
     &__page {
         margin: 0 5px;
+    }
+
+    &__search {
+        padding: 20px 0 0 20px;
     }
 }
 

@@ -28,10 +28,11 @@
         textarea {
             background: #FFFFFF;
             border-radius: 15px;
-            height: 100%;
+            min-height: 62px;
             width: 540px;
             color: #000;
             resize: none;
+            padding: 10px 60px 10px 20px;
         }
 
         .button {

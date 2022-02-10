@@ -62,6 +62,7 @@ let MyPosts = React.memo((props) => {
                                             disabled={!isValid && !dirty}
                                             onClick={handleSubmit}
                                             type='submit'
+                                            className={ui.search}
                                         >
                                             <img src={arrow} alt="" />
                                         </button>

@@ -26,10 +26,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     padding: 10px;
-    font-size: 16px;
-    width: 100%;
-    background-color: #4b4b4e;
-    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+    height: 36px;
+    color: #000;
 
     &:focus {
         border: 3px solid #B5E48C;
@@ -109,6 +109,7 @@
     font-size: 16px;
     padding: 5px;
     width: 250px;
+
     &::placeholder {
         color: #aaa;
     }
@@ -121,6 +122,7 @@
         color: #FFFFFF;
         margin: -3px -5px;
         padding: 3px 5px;
+
         span {
             width: 250px;
         }
@@ -138,6 +140,7 @@
         color: #FFFFFF;
         margin: -3px -5px;
         padding: 3px 5px;
+
         span {
             width: 250px;
         }
@@ -154,11 +157,35 @@
 .follow {
     width: 100%;
 }
+
 //========================================================================================================================================================
 input[type='file'] {
     display: none;
 }
+
 //========================================================================================================================================================
 .contacts {
     padding: 0px 0px 0px 15px;
+}
+
+//========================================================================================================================================================
+.search {
+    background: #B5E48C;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+        background-color: #91C763;
+        transition: all 0.3s ease 0s;
+    }
+
+    img {
+        margin: 2px 0px 0px 0px;
+        z-index: 2;
+    }
 }

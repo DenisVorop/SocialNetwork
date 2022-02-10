@@ -1,6 +1,8 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import { FilterType } from '../../../Redux/usersReducer';
+import { FilterType } from '../../../Redux/usersReducer';//@ts-ignore
+import ui from '../../../scss/ui.module.scss';//@ts-ignore
+import arrow from '../../../assets/images/arrrow.svg'
 
 //========================================================================================================================================================
 
@@ -15,7 +17,7 @@ type PropsType = {
 
 const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
     return (
-        <div>
+        <div className='users-body__search'>
             <Formik
                 initialValues={{
                     term: '',
@@ -33,14 +35,14 @@ const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
             >
                 {({ isSubmitting }) => (
                     <Form>
-                        <Field type="text" name="term" />
+                        <Field type="text" name="term" className={ui._area} />
                         <Field name="friend" as="select">
                             <option value="null">All</option>
                             <option value="true">Only followed</option>
                             <option value="false">Only unfollowed</option>
                         </Field>
-                        <button type="submit" disabled={isSubmitting}>
-                            Find
+                        <button type="submit" disabled={isSubmitting} className={ui.search}>
+                            <img src={arrow} alt="" />
                         </button>
                     </Form>
                 )}

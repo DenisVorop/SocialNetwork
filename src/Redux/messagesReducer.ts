@@ -8,10 +8,10 @@ const ADD_MESSAGE = 'messagesReducer/ADD_MESSAGE';
 
 let initialState = {
     messageData: [
-        { id: 1, message: 'Hello, my Dear friend!' },
-        { id: 2, message: 'I want to say you' },
-        { id: 3, message: 'That your message' },
-        { id: 4, message: 'Make me happy!' },
+        { id: 1, message: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor suscipit vitae iste! Dolor earum sint quae modi voluptatibus minus corrupti.' },
+        { id: 2, message: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam id animi eius. Repellat laboriosam nam, aspernatur dicta quia aperiam sit! A quidem veritatis incidunt in. Esse omnis itaque sequi eaque officiis odio officia? Numquam natus quis cum magnam. Tempore maxime molestiae quis officia voluptas at reiciendis expedita ducimus id rerum. Cum odio quisquam corporis?' },
+        { id: 3, message: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure, labore.' },
+        { id: 4, message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, similique et. Impedit saepe possimus laboriosam repellendus voluptatem harum est! Minus.' },
     ] as Array<messageType>,
     dialogData: [
         { id: 1, name: 'Darya' },

@@ -2,36 +2,60 @@
 import userPhoto from '../../../assets/images/user.svg';
 import Preloader from '../../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
-import React from 'react';// @ts-ignore
+import React, { useEffect } from 'react';// @ts-ignore
 import Paginator from '../../common/Paginator/Paginator.tsx';// @ts-ignore
 import ui from '../../../scss/ui.module.scss';// @ts-ignore
 import { UsersDataType } from './../types/Types';// @ts-ignore
-import UsersSearchForm from './UsersSearchForm.tsx';
-import { FilterType } from '../../../Redux/usersReducer';
+import UsersSearchForm from './UsersSearchForm.tsx';// @ts-ignore
+import { FilterType, getUsers } from '../../../Redux/usersReducer.ts';
+import { useDispatch, useSelector } from 'react-redux';// @ts-ignore
+import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUsersData, getUsersFilter } from "../../../Redux/users-selectors.ts";
 
 //========================================================================================================================================================
 
-type PropsType = {
-    totalUsersCount: number;
-    pageSize: number;
-    currentPage: number;
-    isFetching: any;
-    usersData: UsersDataType;
-    followingInProgress: Array<number>;
-    onPageChanged: (pageNumber: number) => void;
-    unfollow: (userId: number) => void;
-    follow: (userId: number) => void;
-    onFilterChanged: (filter: FilterType) => void;
+type UsersPropsType = {
+    isFetching: boolean,
 }
 
-const Users: React.FC<PropsType> = (props) => {
+export const Users: React.FC<UsersPropsType> = (props) => {
+
+    const totalUsersCount = useSelector(getTotalUsersCount);
+    const currentPage = useSelector(getCurrentPage);
+    const pageSize = useSelector(getPageSize);
+    const filter = useSelector(getUsersFilter);
+    const usersData = useSelector(getUsersData);
+    const followingInProgress = useSelector(getFollowingInProgress);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUsers(currentPage, pageSize, filter));
+    }, [dispatch, currentPage, pageSize, filter])
+
+    const onPageChanged = (pageNumber: number) => {
+        dispatch(getUsers(pageNumber, pageSize, filter));
+    }
+
+    const onFilterChanged = (filter: FilterType) => {
+        dispatch(getUsers(1, pageSize, filter));
+    }
+
+    const follow = (userId: number) => {
+        dispatch(follow(userId));
+    }
+
+    const unfollow = (userId: number) => {
+        dispatch(unfollow(userId));
+    }
+
     return <>
         <div className="body__page">
             <div className='body__users users-body'>
-                <UsersSearchForm onFilterChanged={props.onFilterChanged} />
+                <UsersSearchForm onFilterChanged={onFilterChanged} />
                 <div className='users-body__cards'>
                     {props.isFetching ? <Preloader /> :
-                        props.usersData.map((user: UsersDataType) => <div key={user.id} className="users-body__card card-users-body">
+                    // @ts-ignore
+                        usersData.map((user: UsersDataType) => <div key={user.id} className="users-body__card card-users-body">
                             <div className="border">
                                 <div className="wrap">
                                     <div className="product-wrap">
@@ -40,12 +64,14 @@ const Users: React.FC<PropsType> = (props) => {
                                     <div className="loop-action">
                                         <NavLink to={'/profile/' + user.id} className="add-to-cart">Go to user</NavLink>
                                         {user.followed
-                                            ? <button disabled={props.followingInProgress.some(id => id === user.id)}
-                                                onClick={() => { props.unfollow(user.id); }} className={ui.follow}>
+                                        // @ts-ignore
+                                            ? <button disabled={followingInProgress.some(id => id === user.id)}
+                                                onClick={() => { unfollow(user.id); }} className={ui.follow}>
                                                 <NavLink to={''} className="loop-add-to-cart">unFollow</NavLink>
                                             </button>
-                                            : <button disabled={props.followingInProgress.some(id => id === user.id)}
-                                                onClick={() => { props.follow(user.id); }} className={ui.follow}>
+                                            // @ts-ignore
+                                            : <button disabled={followingInProgress.some(id => id === user.id)}
+                                                onClick={() => { follow(user.id); }} className={ui.follow}>
                                                 <NavLink to={''} className="loop-add-to-cart">follow</NavLink>
                                             </button>}
                                     </div>
@@ -58,15 +84,11 @@ const Users: React.FC<PropsType> = (props) => {
                         )}
                 </div>
                 <Paginator
-                    totalUsersCount={props.totalUsersCount}
-                    pageSize={props.pageSize}
-                    currentPage={props.currentPage}
-                    onPageChanged={props.onPageChanged} />
+                    totalUsersCount={totalUsersCount}
+                    pageSize={pageSize}
+                    currentPage={currentPage}
+                    onPageChanged={onPageChanged} />
             </div>
         </div>
     </>;
 }
-
-//========================================================================================================================================================
-
-export default Users;
