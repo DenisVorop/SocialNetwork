@@ -16,10 +16,10 @@ const ProfileDataForm = (props) => {
             <div className='profile__form'>
                 <Formik
                     initialValues={{
-                        fullName: '',
-                        lookingForAJob: '',
-                        lookingForAJobDescription: '',
-                        aboutMe: '',
+                        fullName: props.initialValues.fullName,
+                        lookingForAJob: props.initialValues.lookingForAJob,
+                        lookingForAJobDescription: props.initialValues.lookingForAJobDescription,
+                        aboutMe: props.initialValues.aboutMe,
                         contacts: {
                             vk: '',
                             instagram: '',
@@ -31,10 +31,6 @@ const ProfileDataForm = (props) => {
                     onSubmit={(values, { setSubmitting, setStatus }) => {
                         props.onSubmit(values, setStatus);
                         setSubmitting(false);
-                        values.fullName = props.initialValues.fullName
-                        values.lookingForAJob = props.initialValues.lookingForAJob
-                        values.lookingForAJobDescription = props.initialValues.lookingForAJobDescription
-                        values.aboutMe = props.initialValues.aboutMe
                     }}
                     validationSchema={validationProfile}
                 >
@@ -81,7 +77,6 @@ const ProfileDataForm = (props) => {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.lookingForAJobDescription}
-                                        // value={values.lookingForAJobDescription || props.initialValues.lookingForAJobDescription}
                                         placeholder='field is required'
                                     />
                                 </p>

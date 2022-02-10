@@ -11,7 +11,7 @@ import Preloader from '../common/Preloader/Preloader';
 
 const Login = lazy(() => import('./Login/Login'));
 const ProfileContainer = lazy(() => import('./Profile/ProfileContainer'));
-const MessagesContainer = lazy(() => import('./Messages/MessagesContainer'));
+const Messages = lazy(() => import('./Messages/Messages.tsx'));
 const UsersPage = lazy(() => import('./Users/UsersPage.tsx'));
 
 const Body = () => {
@@ -30,8 +30,8 @@ const Body = () => {
                                     element={<ProfileContainer />} />
                             </Route>
                             <Route path='/messages/'
-                                element={<MessagesContainer />} />
-                            <Route path='/Users/'
+                                element={<Messages />} />
+                            <Route path={'/users'}
                                 element={<UsersPage />} />
                             <Route path='/news' element={<News />} />
                             <Route path='/music' element={<Music />} />

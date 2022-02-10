@@ -188,4 +188,8 @@ input[type='file'] {
         margin: 2px 0px 0px 0px;
         z-index: 2;
     }
+
+    &:disabled {
+        background-color: darken(#B5E48C, 20)
+    }
 }

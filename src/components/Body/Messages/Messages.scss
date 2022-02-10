@@ -77,4 +77,27 @@
             resize: none;
         }
     }
+
+    &__userphoto {
+        img {
+            width: 40px;
+            height: 40px;
+        }
+        margin: 0px 20px 0px 0px;
+    }
+
+    &__username {
+
+    }
+
+    &__block {
+        display: flex;
+        align-items: center;
+        margin: 0px 0px 5px 0px;
+    }
+
+    &__messagefield {
+        margin: 0px 0px 20px 0px;
+        border-bottom: 1px solid #000;
+    }
 }

@@ -24,7 +24,7 @@ const initialState = {
     isFetching: true as boolean,
     followingInProgress: [] as Array<number>, // array of users id
     filter: {
-        term: '',
+        term: '' as string,
         friend: null as null | boolean,
     }
 }

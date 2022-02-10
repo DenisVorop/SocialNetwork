@@ -4,6 +4,7 @@ import './Users.scss';
 import React from 'react';
 import { useSelector } from "react-redux"// @ts-ignore
 import { getIsFetching } from "../../../Redux/users-selectors.ts";
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
 //========================================================================================================================================================
 
@@ -21,4 +22,6 @@ const UsersPage: React.FC<UsersPagePropsType> = () => {
     )
 }
 
-export default UsersPage;
+//========================================================================================================================================================
+
+export default withAuthRedirect(UsersPage);
