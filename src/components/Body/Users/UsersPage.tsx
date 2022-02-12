@@ -13,8 +13,8 @@ type UsersPagePropsType = {
 }
 
 const UsersPage: React.FC<UsersPagePropsType> = () => {
-
     const isFetching = useSelector(getIsFetching);
+
     return (
         <>
             <Users isFetching={isFetching} />

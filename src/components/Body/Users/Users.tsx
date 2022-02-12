@@ -7,9 +7,12 @@ import Paginator from '../../common/Paginator/Paginator.tsx';// @ts-ignore
 import ui from '../../../scss/ui.module.scss';// @ts-ignore
 import { UsersDataType } from './../types/Types';// @ts-ignore
 import UsersSearchForm from './UsersSearchForm.tsx';// @ts-ignore
-import { FilterType, getUsers } from '../../../Redux/usersReducer.ts';
+import { FilterType, getUsers, follow, unfollow } from '../../../Redux/usersReducer.ts';
 import { useDispatch, useSelector } from 'react-redux';// @ts-ignore
 import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUsersData, getUsersFilter } from "../../../Redux/users-selectors.ts";
+//@ts-ignore
+// import {FilterType, getUsers, follow, unfollow} from '../../../Redux/usersReducer.ts'
+// import { follow as followT } from '../../../Redux/usersReducer.ts'
 
 //========================================================================================================================================================
 
@@ -40,11 +43,11 @@ export const Users: React.FC<UsersPropsType> = (props) => {
         dispatch(getUsers(1, pageSize, filter));
     }
 
-    const follow = (userId: number) => {
+    const followUser = (userId: number) => {
         dispatch(follow(userId));
     }
 
-    const unfollow = (userId: number) => {
+    const unfollowUser = (userId: number) => {
         dispatch(unfollow(userId));
     }
 
@@ -65,11 +68,11 @@ export const Users: React.FC<UsersPropsType> = (props) => {
                                             <NavLink to={'/profile/' + user.id} className="add-to-cart">Go to user</NavLink>
                                             {user.followed
                                                 ? <button disabled={followingInProgress.some(id => id === user.id)}
-                                                    onClick={() => { unfollow(user.id); }} className={ui.follow}>
+                                                    onClick={() => { unfollowUser(user.id); }} className={ui.follow}>
                                                     <NavLink to={''} className="loop-add-to-cart">unFollow</NavLink>
                                                 </button>
                                                 : <button disabled={followingInProgress.some(id => id === user.id)}
-                                                    onClick={() => { follow(user.id); }} className={ui.follow}>
+                                                    onClick={() => { followUser(user.id); }} className={ui.follow}>
                                                     <NavLink to={''} className="loop-add-to-cart">follow</NavLink>
                                                 </button>}
                                         </div>
