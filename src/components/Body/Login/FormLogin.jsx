@@ -1,12 +1,12 @@
+import React from 'react';
 import { Form, Formik } from 'formik';
+import * as yup from 'yup';
+
 import ui from '../../../scss/ui.module.scss';
 import form from '../../../scss/formik.module.scss';
-import * as yup from 'yup';
-import React from 'react';
-
-//========================================================================================================================================================
 
 const FormLogin = (props) => {
+
     const validationLogin = yup.object().shape({
         login: yup.string().typeError('string expected!').required('Obligatory field!'),
         password: yup.string().typeError('string expected!').required('Obligatory field!'),
@@ -107,7 +107,5 @@ const FormLogin = (props) => {
         </Formik>
     )
 }
-
-//========================================================================================================================================================
 
 export default FormLogin;
